@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_front_getx/data/models/products/product_request_model.dart';
+import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
 import '../../core/app_export.dart';
 
+part './product_repository/product_repository.dart';
+
 final dio = Dio(BaseOptions(
-  baseUrl: dotenv.get('CLIENT_URL'),
+  baseUrl: dotenv.get('URL_API'),
   headers: {
     "Accept": "application/json",
   },

@@ -1,8 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
+part 'product_response_model.g.dart';
+
 @JsonSerializable()
-class ProductRequestModel {
-  ProductRequestModel({
+class ProductResponseModel {
+  ProductResponseModel({
     this.id,
     this.name,
     this.brand,
@@ -21,8 +23,11 @@ class ProductRequestModel {
   String? price;
   String? brand;
   String? description;
-  String? stock;
-  String? reduction;
+  int? stock;
+  int? reduction;
   String? category;
   String? size;
+
+  factory ProductResponseModel.fromJson(Map<String, dynamic> json) => _$ProductResponseModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ProductResponseModelToJson(this);
 }
