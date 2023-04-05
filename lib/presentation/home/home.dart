@@ -19,47 +19,66 @@ class HomeScreen extends GetWidget<HomeScreenController> {
               () => SingleChildScrollView(
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height - 149,
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
                     itemCount: controller.productsList.length,
                     addAutomaticKeepAlives: false,
                     addRepaintBoundaries: false,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.amber,
+                        ),
+                        padding: const EdgeInsets.only(left: 8, right: 8),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.network(
-                                '${controller.productsList[index].image}'),
-                            Row(
+                            Flexible(
+                              child: Image.network(
+                                '${controller.productsList[index].image}',
+                                width: 125,
+                                height: 125,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
                                   '${controller.productsList[index].name}',
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.visible,
                                   style: const TextStyle(
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
-                                  '${controller.productsList[index].price} €',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                const SizedBox(
+                                  height: 5,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 30),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: const Text("See details"),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text("Add to cart"),
+                                  child: Text(
+                                    '${controller.productsList[index].price} €',
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ],
                             )
