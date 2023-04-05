@@ -14,55 +14,52 @@ class HomeScreen extends GetWidget<HomeScreenController> {
       drawer: const NavigationDrawerMenu(),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(
               () => SingleChildScrollView(
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height - 149,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
+                  child: ListView.builder(
                     itemCount: controller.productsList.length,
                     addAutomaticKeepAlives: false,
                     addRepaintBoundaries: false,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.amber,
-                        ),
-                        padding: const EdgeInsets.only(left: 8, right: 8),
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Flexible(
-                              child: Image.network(
-                                '${controller.productsList[index].image}',
-                                width: 125,
-                                height: 125,
-                                fit: BoxFit.fill,
-                              ),
+                            Image.network(
+                              '${controller.productsList[index].image}',
                             ),
-                            Column(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  '${controller.productsList[index].name}',
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.visible,
+                                  '${controller.productsList[index].brand}',
                                   style: const TextStyle(
-                                    color: Colors.white,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.black,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 5,
+                                Text(
+                                  '${controller.productsList[index].price}',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  '${controller.productsList[index].category}',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ],
                             ),
@@ -71,17 +68,26 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: Text(
-                                    '${controller.productsList[index].price} €',
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(
+                                  child: const Text(
+                                    'See Details',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Add to Cart',
+                                    style: TextStyle(
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       );
