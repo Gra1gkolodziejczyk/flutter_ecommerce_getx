@@ -1,4 +1,8 @@
 import '../core/app_export.dart';
+import '../presentation/commandes/binding/commandes_screen_binding.dart';
+import '../presentation/commandes/commandes.dart';
+import '../presentation/favoris/binding/favoris_screen_binding.dart';
+import '../presentation/favoris/favoris.dart';
 import '../presentation/home/binding/home_screen_binding.dart';
 import '../presentation/home/home.dart';
 import '../presentation/login/binding/login_screen_binding.dart';
@@ -18,6 +22,8 @@ class AppRoutes {
   static String login = '/login';
   static String register = '/register';
   static String resetPassword = '/resetPassword';
+  static String favoris = '/favoris';
+  static String commandes = '/commandes';
 
   static List<GetPage> pages = [
     GetPage(
@@ -49,6 +55,16 @@ class AppRoutes {
       name: resetPassword,
       page: () => const ResetPasswordScreen(),
       binding: RegisterScreenBinding(),
+    ),
+    GetPage(
+      name: favoris,
+      page: () => const FavorisScreen(),
+      binding: FavorisScreenBinding(),
+    ),
+    GetPage(
+      name: commandes,
+      page: () => const CommandesScreen(),
+      binding: CommandesScreenBinding(),
     ),
   ];
 }

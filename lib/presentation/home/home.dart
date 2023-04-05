@@ -26,43 +26,32 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Image.network(
-                              '${controller.productsList[index].image}'),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
+                            Image.network(
+                                '${controller.productsList[index].image}'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  '${controller.productsList[index].category}',
+                                  '${controller.productsList[index].name}',
                                   style: const TextStyle(
-                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
-                                  '${controller.productsList[index].price}',
+                                  '${controller.productsList[index].price} €',
                                   style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '${controller.productsList[index].brand}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 ElevatedButton(
                                   onPressed: () {},
@@ -73,9 +62,9 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                   child: const Text("Add to cart"),
                                 ),
                               ],
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),
