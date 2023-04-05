@@ -28,7 +28,7 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text(
-                "Profile",
+                "Profil",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
@@ -65,9 +65,9 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.favorite),
+              leading: const Icon(Icons.paid_rounded),
               title: const Text(
-                "Mes favories",
+                "Mes commandes",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
@@ -83,7 +83,7 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
               color: Colors.blue,
               minWidth: MediaQuery.of(context).size.width,
               child: const Text(
-                "Se déconnecté",
+                "Se déconnecter",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
