@@ -14,85 +14,83 @@ class HomeScreen extends GetWidget<HomeScreenController> {
       drawer: const NavigationDrawerMenu(),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(
-              () => SingleChildScrollView(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height - 149,
-                  child: ListView.builder(
-                    itemCount: controller.productsList.length,
-                    addAutomaticKeepAlives: false,
-                    addRepaintBoundaries: false,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
+              () => SizedBox(
+                height: MediaQuery.of(context).size.height - 149,
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: controller.categoriesList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Text(
+                          '${controller.categoriesList[index].name}',
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Column(
                           children: [
-                            Image.network(
-                              '${controller.productsList[index].image}',
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  '${controller.productsList[index].brand}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
+                            Obx(
+                              () => SizedBox(
+                                height: 400,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: controller.productsList.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      children: [
+                                        Image.network(
+                                          '${controller.productsList[index].image}',
+                                          width: 300,
+                                          height: 300,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '${controller.productsList[index].brand}',
+                                            ),
+                                            Text(
+                                              '${controller.productsList[index].price}',
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                ElevatedButton(
+                                                  child: const Text(
+                                                      "Voir détails"),
+                                                  onPressed: () {},
+                                                ),
+                                                ElevatedButton(
+                                                  child: const Text(
+                                                      "Ajouter au panier"),
+                                                  onPressed: () {},
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
-                                Text(
-                                  '${controller.productsList[index].price}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  '${controller.productsList[index].category}',
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'See Details',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'Add to Cart',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
-                      );
-                    },
-                  ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),

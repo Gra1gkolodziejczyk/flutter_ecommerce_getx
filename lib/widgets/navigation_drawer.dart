@@ -26,6 +26,19 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
           runSpacing: 11,
           children: [
             ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text(
+                "Home",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              onTap: () {
+                Get.toNamed(AppRoutes.initialRoute);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.person),
               title: const Text(
                 "Profil",
@@ -35,7 +48,7 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
                 ),
               ),
               onTap: () {
-                Get.toNamed(AppRoutes.profile);
+                Get.toNamed(AppRoutes.login);
               },
             ),
             ListTile(
