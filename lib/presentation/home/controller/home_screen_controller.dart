@@ -23,12 +23,13 @@ class HomeScreenController extends GetxController {
     super.onClose();
   }
 
-  void getProductsForCategory(String id) async {
+  void getProductsForCategory(String? id) async {
     var productsResponse =
-        await _productsRepository.getProduct(ProductRequestModel(), id);
+        await _productsRepository.getProduct(ProductRequestModel(), id!);
 
     if (productsResponse.isNotEmpty) {
       productsList.value = productsResponse;
+      print(productsResponse);
     }
   }
 
@@ -38,7 +39,12 @@ class HomeScreenController extends GetxController {
 
     if (categoriesResponse.isNotEmpty) {
       categoriesList.value = categoriesResponse;
-          getProductsForCategory(categoriesResponse.first.id!);
+      print(categoriesList.value);
+      for (var i = 0; i < categoriesList.length; i++) {
+        if (categoriesList[i].name == 'deck') {
+          getProductsForCategory(categoriesList[i].id);
+        }
+      }
     }
   }
 }

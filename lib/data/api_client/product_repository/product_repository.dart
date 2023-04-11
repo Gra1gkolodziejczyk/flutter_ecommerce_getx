@@ -6,6 +6,7 @@ class ProductRepository {
     var response = await dio.get('${ApiClient.productsUrl}/category/$id',
         data: model.toJson());
     if (response.statusCode == 200) {
+      print(response.data);
       List<ProductResponseModel> responseList = (response.data as List)
           .map((e) => ProductResponseModel.fromJson(e))
           .toList();
