@@ -39,12 +39,24 @@ class HomeScreenController extends GetxController {
     if (categoriesResponse.isNotEmpty) {
       categoriesList.value = categoriesResponse;
       for (var i = 0; i < categoriesList.length; i++) {
-        if (categoriesList[i].name == 'deck') {
-          getProductsForCategory(categoriesList[i].id);
-        } else if (categoriesList[i].name == 'truck') {
-          getProductsForCategory(categoriesList[i].id);
-        } else {
-          getProductsForCategory(categoriesList[i].id);
+        switch (categoriesList[i].name) {
+          case ('truck'):
+            {
+              getProductsForCategory(categoriesList[1].id);
+            }
+            break;
+
+          case ('roue'):
+            {
+              getProductsForCategory(categoriesList[2].id);
+            }
+            break;
+
+          default:
+            {
+              getProductsForCategory(categoriesList[0].id);
+            }
+            break;
         }
       }
     }

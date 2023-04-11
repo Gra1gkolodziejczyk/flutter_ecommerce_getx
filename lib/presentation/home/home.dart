@@ -16,6 +16,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
       body: SafeArea(
         child: Column(
           children: [
+            
             Obx(
               () => SizedBox(
                 height: MediaQuery.of(context).size.height - 149,
@@ -41,7 +42,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                   scrollDirection: Axis.horizontal,
                                   itemCount: controller.productsList.length,
                                   itemBuilder: (context, int index) {
-                                    return ProductCard();
+                                    return const ProductCard();
                                   },
                                 ),
                               ),
