@@ -1,3 +1,4 @@
+import 'package:e_commerce_front_getx/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
@@ -35,53 +36,12 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                           children: [
                             Obx(
                               () => SizedBox(
-                                height: 400,
+                                height: 500,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: controller.productsList.length,
-                                  itemBuilder: (context, index) {
-                                    return Column(
-                                      children: [
-                                        Image.network(
-                                          '${controller.productsList[index].image}',
-                                          width: 300,
-                                          height: 300,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              '${controller.productsList[index].brand}',
-                                            ),
-                                            Text(
-                                              '${controller.productsList[index].price}',
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                ElevatedButton(
-                                                  child: const Text(
-                                                      "Voir détails"),
-                                                  onPressed: () {},
-                                                ),
-                                                ElevatedButton(
-                                                  child: const Text(
-                                                      "Ajouter au panier"),
-                                                  onPressed: () {},
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
+                                  itemBuilder: (context, int index) {
+                                    return ProductCard();
                                   },
                                 ),
                               ),

@@ -8,7 +8,6 @@ class CategoriesRepository {
       List<CategoriesResponseModel> categoriesList = (response.data as List)
           .map((e) => CategoriesResponseModel.fromJson(e))
           .toList();
-      print(categoriesList);
       return categoriesList;
     } else {
       throw Exception('Error get categories');

@@ -29,7 +29,6 @@ class HomeScreenController extends GetxController {
 
     if (productsResponse.isNotEmpty) {
       productsList.value = productsResponse;
-      print(productsResponse);
     }
   }
 
@@ -39,9 +38,12 @@ class HomeScreenController extends GetxController {
 
     if (categoriesResponse.isNotEmpty) {
       categoriesList.value = categoriesResponse;
-      print(categoriesList.value);
       for (var i = 0; i < categoriesList.length; i++) {
         if (categoriesList[i].name == 'deck') {
+          getProductsForCategory(categoriesList[i].id);
+        } else if (categoriesList[i].name == 'truck') {
+          getProductsForCategory(categoriesList[i].id);
+        } else {
           getProductsForCategory(categoriesList[i].id);
         }
       }
