@@ -92,7 +92,9 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
             ),
             const SizedBox(height: 100),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.logOut();
+              },
               color: Colors.blue,
               minWidth: MediaQuery.of(context).size.width,
               child: const Text(

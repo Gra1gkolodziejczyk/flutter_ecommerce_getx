@@ -9,9 +9,9 @@ class FavorisScreen extends GetWidget<FavorisScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(),
-      drawer: const NavigationDrawerMenu(),
+    return const Scaffold(
+      appBar: CustomAppBar(),
+      drawer: NavigationDrawerMenu(),
       body: SafeArea(
         child: Text("Hello World"),
       ),

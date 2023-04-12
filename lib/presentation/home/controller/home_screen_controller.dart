@@ -1,10 +1,13 @@
+import 'package:e_commerce_front_getx/core/authentification/CacheManager.dart';
+import 'package:e_commerce_front_getx/routes/app_routes.dart';
 import '../../../core/app_export.dart';
 import '../../../data/api_client/api_client.dart';
 import '../../../data/models/categories/categories_request_model.dart';
 import '../../../data/models/products/product_request_model.dart';
 import '../model/home_screen_model.dart';
 
-class HomeScreenController extends GetxController {
+class HomeScreenController extends GetxController with CacheManager {
+  var isLogged = false.obs;
   final ProductRepository _productsRepository = Get.find();
   final CategoriesRepository _categoriesRepository = Get.find();
   // RxList<ProductResponseModel> productsList = <ProductResponseModel>[].obs;
@@ -64,7 +67,12 @@ class HomeScreenController extends GetxController {
           name: categoriesResponse[i].name,
           products: products));
     }
-    print(respList);
     categoriesWithProduct.value = respList;
+  }
+
+  void logOut() async {
+    isLogged.value = false;
+    removeJwt();
+    Get.offNamed(AppRoutes.initialRoute);
   }
 }

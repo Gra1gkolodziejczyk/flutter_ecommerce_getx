@@ -1,12 +1,13 @@
+import 'package:e_commerce_front_getx/core/authentification/CacheManager.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_export.dart';
 
-class LoginScreenController extends GetxController {
+class LoginScreenController extends GetxController with CacheManager {
+  final isLogged = false.obs;
   final UserRepository _userRepository = Get.find();
-
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
