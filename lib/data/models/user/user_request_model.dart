@@ -5,7 +5,6 @@ part 'user_request_model.g.dart';
 @JsonSerializable()
 class UserRequestModel {
   UserRequestModel({
-    this.id,
     this.name,
     this.firstname,
     this.email,
@@ -13,7 +12,6 @@ class UserRequestModel {
     this.confirmpassword,
   });
 
-  String? id;
   String? name;
   String? firstname;
   String? email;

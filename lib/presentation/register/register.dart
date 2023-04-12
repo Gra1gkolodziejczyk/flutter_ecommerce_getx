@@ -28,7 +28,7 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
               ),
               const SizedBox(height: 50),
               Form(
-                key: controller.formKey,
+                key: controller.formKeyRegister,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -76,14 +76,15 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
                     const SizedBox(height: 50),
                     ElevatedButton(
                       onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
+                        if (controller.formKeyRegister.currentState!
+                            .validate()) {
                           controller.register();
                           Get.toNamed(AppRoutes.initialRoute);
                         }
                       },
                       child: const Text('Inscription'),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [

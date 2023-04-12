@@ -7,24 +7,23 @@ import '../../../core/app_export.dart';
 class RegisterScreenController extends GetxController {
   final UserRepository _userRepository = Get.find();
 
+  TextEditingController name = TextEditingController();
+  TextEditingController firstname = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  TextEditingController firstname = TextEditingController();
-  TextEditingController name = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKeyRegister = GlobalKey<FormState>();
 
   void onInit() {
     super.onInit();
-    register();
   }
 
   void onClose() {
     super.onClose();
   }
 
-  void register() {
-    _userRepository.register(
+  void register() async {
+    await _userRepository.register(
       UserRequestModel(
         name: name.text,
         firstname: firstname.text,
@@ -60,28 +59,20 @@ class RegisterScreenController extends GetxController {
   String? validatePassword(String? formPassword) {
     if (formPassword == null || formPassword.isEmpty)
       return "le mot de passe doit être renseigné";
-    String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~?]).{8,}$';
+    String pattern = r'^.{8,}$';
     RegExp regex = RegExp(pattern);
     if (!regex.hasMatch(formPassword))
-      return '''
-        Le mot de passe doit contenir minimum 8 charactères,
-        doit inclure une majuscule, un nombre et un symbol.
-        ''';
+      return 'Le mot de passe doit contenir minimum 8 charactères.';
     return null;
   }
 
   String? validateConfirmpassword(String? formConfirmpassword) {
     if (formConfirmpassword == null || formConfirmpassword.isEmpty)
       return "le mot de passe doit être renseigné";
-    String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~?]).{8,}$';
+    String pattern = r'^.{8,}$';
     RegExp regex = RegExp(pattern);
     if (!regex.hasMatch(formConfirmpassword))
-      return '''
-        Le mot de passe doit contenir minimum 8 charactères,
-        doit inclure une majuscule, un nombre et un symbol.
-        ''';
+      return 'Le mot de passe doit contenir minimum 8 charactères.';
     return null;
   }
 }

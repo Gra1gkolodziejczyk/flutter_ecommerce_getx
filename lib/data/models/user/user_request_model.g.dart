@@ -8,7 +8,6 @@ part of 'user_request_model.dart';
 
 UserRequestModel _$UserRequestModelFromJson(Map<String, dynamic> json) =>
     UserRequestModel(
-      id: json['id'] as String?,
       name: json['name'] as String?,
       firstname: json['firstname'] as String?,
       email: json['email'] as String?,
@@ -18,7 +17,6 @@ UserRequestModel _$UserRequestModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$UserRequestModelToJson(UserRequestModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
       'firstname': instance.firstname,
       'email': instance.email,

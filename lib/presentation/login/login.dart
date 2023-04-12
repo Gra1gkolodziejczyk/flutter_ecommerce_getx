@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
-import 'controller/login_screen_controller.dart';
+import './controller/login_screen_controller.dart';
 
 class LoginScreen extends GetWidget<LoginScreenController> {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class LoginScreen extends GetWidget<LoginScreenController> {
               ),
               const SizedBox(height: 50),
               Form(
-                key: controller.formKey,
+                key: controller.formKeyLogin,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -52,7 +52,7 @@ class LoginScreen extends GetWidget<LoginScreenController> {
                     const SizedBox(height: 50),
                     ElevatedButton(
                       onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
+                        if (controller.formKeyLogin.currentState!.validate()) {
                           controller.login();
                           Get.toNamed(AppRoutes.initialRoute);
                         }

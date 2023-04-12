@@ -9,12 +9,11 @@ class LoginScreenController extends GetxController {
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
 
   @override
   void onInit() {
     super.onInit();
-    login();
   }
 
   @override
@@ -22,8 +21,8 @@ class LoginScreenController extends GetxController {
     super.onClose();
   }
 
-  void login() {
-    _userRepository
+  void login() async {
+    await _userRepository
         .login(UserRequestModel(email: email.text, password: password.text));
   }
 
@@ -42,14 +41,10 @@ class LoginScreenController extends GetxController {
     if (formPassword == null || formPassword.isEmpty)
       return "Le mot de passe doit être renseigné";
 
-    String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~?]).{8,}$';
+    String pattern = r'^.{8,}$';
     RegExp regex = RegExp(pattern);
     if (!regex.hasMatch(formPassword)) {
-      return '''
-        Le mot de passe doit contenir minimum 8 charactères,
-        doit inclure une majuscule, un nombre et un symbol.
-        ''';
+      return "Le mot de passe doit contenir minimum 8 charactères.";
     }
     return null;
   }

@@ -5,14 +5,15 @@ import '../presentation/favoris/binding/favoris_screen_binding.dart';
 import '../presentation/favoris/favoris.dart';
 import '../presentation/home/binding/home_screen_binding.dart';
 import '../presentation/home/home.dart';
-import '../presentation/login/binding/login_screen_binding.dart';
-import '../presentation/login/login.dart';
 import '../presentation/panier/binding/panier_screen_binding.dart';
 import '../presentation/panier/panier.dart';
 import '../presentation/profile/binding/profile_screen_binding.dart';
 import '../presentation/profile/profile.dart';
 import '../presentation/register/binding/register_screen_binding.dart';
 import '../presentation/register/register.dart';
+import '../presentation/login/binding/login_screen_binding.dart';
+import '../presentation/login/login.dart';
+import '../presentation/reset_password/binding/reset_password_screen_binding.dart';
 import '../presentation/reset_password/reset_password.dart';
 
 class AppRoutes {
@@ -54,7 +55,7 @@ class AppRoutes {
     GetPage(
       name: resetPassword,
       page: () => const ResetPasswordScreen(),
-      binding: RegisterScreenBinding(),
+      binding: ResetPasswordScreenBinding(),
     ),
     GetPage(
       name: favoris,
