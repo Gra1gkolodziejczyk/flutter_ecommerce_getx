@@ -28,12 +28,12 @@ class AppRoutes {
 
   static List<GetPage> pages = [
     GetPage(
-      name: profile,
+      name: initialRoute,
       page: () => const HomeScreen(),
       binding: HomeScreenBinding(),
     ),
     GetPage(
-      name: initialRoute,
+      name: profile,
       page: () => const ProfileScreen(),
       binding: ProfileScreenBinding(),
     ),
