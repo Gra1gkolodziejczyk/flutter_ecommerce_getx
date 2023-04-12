@@ -3,8 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_response_model.g.dart';
 
 @JsonSerializable()
-class UserRequestModel {
-  UserRequestModel({
+class UserResponseModel {
+  UserResponseModel({
     this.id,
     this.name,
     this.firstname,
@@ -20,7 +20,7 @@ class UserRequestModel {
   String? password;
   String? confirmpassword;
 
-  factory UserRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$UserRequestModelFromJson(json);
-  Map<String, dynamic> toJson() => _$UserRequestModelToJson(this);
+  factory UserResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$UserResponseModelFromJson(json);
+  Map<String, dynamic> toJson() => _$UserResponseModelToJson(this);
 }

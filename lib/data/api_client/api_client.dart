@@ -3,10 +3,13 @@ import 'package:e_commerce_front_getx/data/models/products/product_request_model
 import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/categories/categories_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/categories/categories_response_model.dart';
+import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
+import 'package:e_commerce_front_getx/data/models/user/user_response_model.dart';
 import '../../core/app_export.dart';
 
 part './product_repository/product_repository.dart';
 part './categories_repository/categories_repository.dart';
+part './user_repository/user_repository.dart';
 
 final dio = Dio(BaseOptions(
   baseUrl: dotenv.get('URL_API'),

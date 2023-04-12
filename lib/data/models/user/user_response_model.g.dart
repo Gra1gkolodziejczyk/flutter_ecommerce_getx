@@ -6,8 +6,8 @@ part of 'user_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserRequestModel _$UserRequestModelFromJson(Map<String, dynamic> json) =>
-    UserRequestModel(
+UserResponseModel _$UserResponseModelFromJson(Map<String, dynamic> json) =>
+    UserResponseModel(
       id: json['id'] as String?,
       name: json['name'] as String?,
       firstname: json['firstname'] as String?,
@@ -16,7 +16,7 @@ UserRequestModel _$UserRequestModelFromJson(Map<String, dynamic> json) =>
       confirmpassword: json['confirmpassword'] as String?,
     );
 
-Map<String, dynamic> _$UserRequestModelToJson(UserRequestModel instance) =>
+Map<String, dynamic> _$UserResponseModelToJson(UserResponseModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

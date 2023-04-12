@@ -5,12 +5,12 @@ class CategoriesRepository {
       CategoriesRequestModel model) async {
     var response = await dio.get(ApiClient.categoriesUrl, data: model.toJson());
     if (response.statusCode == 200) {
-      List<CategoriesResponseModel> responseList = (response.data as List)
+      List<CategoriesResponseModel> categoriesList = (response.data as List)
           .map((e) => CategoriesResponseModel.fromJson(e))
           .toList();
-      return responseList;
+      return categoriesList;
     } else {
-      throw Exception('Error get products');
+      throw Exception('Error get categories');
     }
   }
 }
