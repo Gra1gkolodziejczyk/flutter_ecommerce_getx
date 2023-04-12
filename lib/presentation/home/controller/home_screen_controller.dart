@@ -4,14 +4,15 @@ import '../../../data/models/products/product_request_model.dart';
 import '../../../data/models/products/product_response_model.dart';
 
 class HomeScreenController extends GetxController {
-    final ProductRepository _productsRepository = Get.find();
-    RxList<ProductResponseModel> productsList = <ProductResponseModel>[].obs;
+  final ProductRepository _productsRepository = Get.find();
+  RxList<ProductResponseModel> productsList = <ProductResponseModel>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     getProduct();
   }
+
   @override
   void onClose() {
     super.onClose();
