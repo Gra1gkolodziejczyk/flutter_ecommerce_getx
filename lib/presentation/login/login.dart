@@ -13,73 +13,72 @@ class LoginScreen extends GetWidget<LoginScreenController> {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const NavigationDrawerMenu(),
+      backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.all(30.0),
           child: Column(
             children: [
-              const SizedBox(height: 100),
-              const Text(
-                'Page de connexion',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
+              Image.asset(
+                'assets/ShopTaBoard.png',
+                width: 370,
+                height: 370,
               ),
-              const SizedBox(height: 50),
-              Form(
-                key: controller.formKeyLogin,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      validator: controller.validateEmail,
-                      controller: controller.email,
-                      decoration: const InputDecoration(
-                        labelText: "E-mail",
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40),
+                child: Form(
+                  key: controller.formKeyLogin,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        validator: controller.validateEmail,
+                        controller: controller.email,
+                        decoration: const InputDecoration(
+                          labelText: "E-mail",
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: controller.validatePassword,
-                      controller: controller.password,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "Mot de passe",
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        validator: controller.validatePassword,
+                        controller: controller.password,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: "Mot de passe",
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 50),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (controller.formKeyLogin.currentState!.validate()) {
-                          controller.login();
-                          Get.toNamed(AppRoutes.initialRoute);
-                        }
-                      },
-                      child: const Text('Connexion'),
-                    ),
-                    Row(
-                      children: [
-                        const Text("Vous n'avez pas encore de compte ? "),
-                        const SizedBox(height: 100),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          child: InkWell(
-                            onTap: () {
-                              Get.toNamed(AppRoutes.register);
-                            },
-                            child: const Text(
-                              "Inscrivez-vous",
-                              style: TextStyle(
-                                color: Colors.blue,
+                      const SizedBox(height: 50),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (controller.formKeyLogin.currentState!
+                              .validate()) {
+                            controller.login();
+                            Get.toNamed(AppRoutes.initialRoute);
+                          }
+                        },
+                        child: const Text('Connexion'),
+                      ),
+                      Row(
+                        children: [
+                          const Text("Vous n'avez pas encore de compte ? "),
+                          const SizedBox(height: 100),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5.0),
+                            child: InkWell(
+                              onTap: () {
+                                Get.toNamed(AppRoutes.register);
+                              },
+                              child: const Text(
+                                "Inscrivez-vous",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

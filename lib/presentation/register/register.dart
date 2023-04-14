@@ -13,96 +13,107 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const NavigationDrawerMenu(),
+      backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.all(30.0),
           child: Column(
             children: [
-              const Text(
-                "Page d'inscription",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
+              Image.asset(
+                'assets/ShopTaBoard.png',
+                width: 270,
+                height: 270,
               ),
-              const SizedBox(height: 50),
-              Form(
-                key: controller.formKeyRegister,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      validator: controller.validateName,
-                      controller: controller.name,
-                      decoration: const InputDecoration(
-                        labelText: "Nom",
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: controller.validateFirstname,
-                      controller: controller.firstname,
-                      decoration: const InputDecoration(
-                        labelText: "Prénom",
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: controller.validateEmail,
-                      controller: controller.email,
-                      decoration: const InputDecoration(
-                        labelText: "E-mail",
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: controller.validatePassword,
-                      controller: controller.password,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "Mot de passe",
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: controller.validateConfirmpassword,
-                      controller: controller.confirmpassword,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: "Confirmer votre mot de passe",
-                      ),
-                    ),
-                    const SizedBox(height: 50),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (controller.formKeyRegister.currentState!
-                            .validate()) {
-                          controller.register();
-                          Get.toNamed(AppRoutes.initialRoute);
-                        }
-                      },
-                      child: const Text('Inscription'),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const Text("Vous avez déjà un compte ? "),
-                        InkWell(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.login);
-                          },
-                          child: const Text(
-                            "Connectez-vous",
-                            style: TextStyle(
-                              color: Colors.blue,
-                            ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40),
+                child: Form(
+                  key: controller.formKeyRegister,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: TextFormField(
+                          validator: controller.validateName,
+                          controller: controller.name,
+                          decoration: const InputDecoration(
+                            labelText: "Nom",
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: TextFormField(
+                          validator: controller.validateFirstname,
+                          controller: controller.firstname,
+                          decoration: const InputDecoration(
+                            labelText: "Prénom",
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: TextFormField(
+                          validator: controller.validateEmail,
+                          controller: controller.email,
+                          decoration: const InputDecoration(
+                            labelText: "E-mail",
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: TextFormField(
+                          validator: controller.validatePassword,
+                          controller: controller.password,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: "Mot de passe",
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: TextFormField(
+                          validator: controller.validateConfirmpassword,
+                          controller: controller.confirmpassword,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: "Confirmer votre mot de passe",
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (controller.formKeyRegister.currentState!
+                                .validate()) {
+                              controller.register();
+                              Get.toNamed(AppRoutes.initialRoute);
+                            }
+                          },
+                          child: const Text('Inscription'),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const Text("Vous avez déjà un compte ? "),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.login);
+                            },
+                            child: const Text(
+                              "Connectez-vous",
+                              style: TextStyle(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

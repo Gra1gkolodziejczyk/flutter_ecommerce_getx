@@ -3,15 +3,31 @@ import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import '../home/controller/home_screen_controller.dart';
+import '../../widgets/Capitalize.dart';
 
 class HomeScreen extends GetWidget<HomeScreenController> {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final ButtonStyle bg = ElevatedButton.styleFrom(
+    backgroundColor: const Color.fromARGB(255, 251, 209, 72),
+  );
+
+  final TextStyle title = const TextStyle(
+      fontSize: 25,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(255, 89, 56, 56));
+
+  final TextStyle text = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(255, 89, 56, 56));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const NavigationDrawerMenu(),
+      backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
         child: Column(
           children: [
@@ -25,11 +41,8 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                     return Column(
                       children: [
                         Text(
-                          '${controller.categoriesWithProduct[index].name}',
-                          style: const TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          '${controller.categoriesWithProduct[index].name?.toCapitalized()}',
+                          style: title,
                         ),
                         Column(
                           children: [
@@ -50,17 +63,22 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                           width: 300,
                                           height: 300,
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              '${controller.categoriesWithProduct[index].products![index2].brand}',
-                                            ),
-                                            Text(
-                                              '${controller.categoriesWithProduct[index].products![index2].price}',
-                                            ),
-                                          ],
+                                        SizedBox(
+                                          width: 250,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
+                                                style: text,
+                                              ),
+                                              Text(
+                                                '${controller.categoriesWithProduct[index].products![index2].price} €',
+                                                style: text,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         Column(
                                           children: [
@@ -70,14 +88,20 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                       .spaceBetween,
                                               children: [
                                                 ElevatedButton(
-                                                  child: const Text(
-                                                      "Voir détails"),
+                                                  style: bg,
+                                                  child: Text(
+                                                    "Voir détails",
+                                                    style: text,
+                                                  ),
                                                   onPressed: () {},
                                                 ),
                                                 ElevatedButton(
-                                                  child: const Text(
-                                                      "Ajouter au panier"),
                                                   onPressed: () {},
+                                                  style: bg,
+                                                  child: Text(
+                                                    "Ajouter au panier",
+                                                    style: text,
+                                                  ),
                                                 ),
                                               ],
                                             ),

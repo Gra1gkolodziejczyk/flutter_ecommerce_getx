@@ -29,7 +29,7 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
       name: initialRoute,
-      page: () => const HomeScreen(),
+      page: () => HomeScreen(),
       binding: HomeScreenBinding(),
     ),
     GetPage(

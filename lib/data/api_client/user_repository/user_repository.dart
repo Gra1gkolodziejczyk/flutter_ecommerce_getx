@@ -20,4 +20,14 @@ class UserRepository {
       throw Exception('Error register');
     }
   }
+
+  Future<UserResponseModel?> getUser(UserRequestModel model) async {
+    var response =
+        await dio.get('${ApiClient.userUrl}/account', data: model.toJson());
+    if (response.statusCode == 200) {
+      return UserResponseModel.fromJson(response.data);
+    } else {
+      throw Exception('Error get user');
+    }
+  }
 }
