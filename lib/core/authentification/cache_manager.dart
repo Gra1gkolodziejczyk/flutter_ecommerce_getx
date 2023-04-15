@@ -7,6 +7,7 @@ mixin CacheManager {
   final storage = GetStorage();
 
   Future<bool> saveJwt(String? jwt) async {
+    print(jwt);
     await storage.write('jwt', jwt);
     return true;
   }
@@ -16,6 +17,7 @@ mixin CacheManager {
   }
 
   Future<void> removeJwt() async {
+    print(removeJwt());
     await storage.remove('jwt');
   }
 

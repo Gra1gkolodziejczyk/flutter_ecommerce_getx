@@ -15,7 +15,7 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
       drawer: const NavigationDrawerMenu(),
       backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           child: Column(
             children: [
               Image.asset(
@@ -89,7 +89,6 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
                             if (controller.formKeyRegister.currentState!
                                 .validate()) {
                               controller.register();
-                              Get.toNamed(AppRoutes.initialRoute);
                             }
                           },
                           child: const Text('Inscription'),

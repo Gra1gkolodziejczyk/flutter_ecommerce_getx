@@ -1,4 +1,5 @@
-import 'package:e_commerce_front_getx/core/authentification/CacheManager.dart';
+import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
+import 'package:e_commerce_front_getx/core/authentification/authentification_manager.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,8 @@ import 'package:flutter/material.dart';
 import '../../../core/app_export.dart';
 
 class LoginScreenController extends GetxController with CacheManager {
-  final isLogged = false.obs;
-  final UserRepository _userRepository = Get.find();
+  final UserRepository userRepository = Get.find();
+  final AuthentificationManager authentificationManager = Get.find();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
@@ -23,8 +24,13 @@ class LoginScreenController extends GetxController with CacheManager {
   }
 
   void login() async {
-    await _userRepository
+    final response = await userRepository
         .login(UserRequestModel(email: email.text, password: password.text));
+    if (response != null) {
+      authentificationManager.login(response.jwt);
+    } else {
+      throw Exception('Error jwt');
+    }
   }
 
   String? validateEmail(String? formEmail) {

@@ -1,4 +1,5 @@
 import '../core/app_export.dart';
+import '../core/authentification/authentification_middleware.dart';
 import '../presentation/commandes/binding/commandes_screen_binding.dart';
 import '../presentation/commandes/commandes.dart';
 import '../presentation/favoris/binding/favoris_screen_binding.dart';
@@ -36,11 +37,13 @@ class AppRoutes {
       name: profile,
       page: () => const ProfileScreen(),
       binding: ProfileScreenBinding(),
+      middlewares: [AuthentificationMiddleware()],
     ),
     GetPage(
       name: panier,
       page: () => const PanierScreen(),
       binding: PanierScreenBinding(),
+      middlewares: [AuthentificationMiddleware()],
     ),
     GetPage(
       name: login,
@@ -61,11 +64,13 @@ class AppRoutes {
       name: favoris,
       page: () => const FavorisScreen(),
       binding: FavorisScreenBinding(),
+      middlewares: [AuthentificationMiddleware()],
     ),
     GetPage(
       name: commandes,
       page: () => const CommandesScreen(),
       binding: CommandesScreenBinding(),
+      middlewares: [AuthentificationMiddleware()],
     ),
   ];
 }

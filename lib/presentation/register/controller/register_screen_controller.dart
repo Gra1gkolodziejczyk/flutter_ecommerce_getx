@@ -1,12 +1,14 @@
+import 'package:e_commerce_front_getx/core/authentification/authentification_manager.dart';
+import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_export.dart';
 
-class RegisterScreenController extends GetxController {
-  final UserRepository _userRepository = Get.find();
-
+class RegisterScreenController extends GetxController with CacheManager {
+  final UserRepository userRepository = Get.find();
+  final AuthentificationManager authentificationManager = Get.find();
   TextEditingController name = TextEditingController();
   TextEditingController firstname = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -23,7 +25,7 @@ class RegisterScreenController extends GetxController {
   }
 
   void register() async {
-    await _userRepository.register(
+    final response = await userRepository.register(
       UserRequestModel(
         name: name.text,
         firstname: firstname.text,
@@ -32,6 +34,11 @@ class RegisterScreenController extends GetxController {
         confirmpassword: confirmpassword.text,
       ),
     );
+    if (response != null) {
+      authentificationManager.register(response.jwt);
+    } else {
+      throw Exception('Error jwt');
+    }
   }
 
   String? validateFirstname(String? formFirstname) {

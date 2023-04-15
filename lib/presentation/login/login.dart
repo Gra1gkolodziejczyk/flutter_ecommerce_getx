@@ -52,7 +52,6 @@ class LoginScreen extends GetWidget<LoginScreenController> {
                           if (controller.formKeyLogin.currentState!
                               .validate()) {
                             controller.login();
-                            Get.toNamed(AppRoutes.initialRoute);
                           }
                         },
                         child: const Text('Connexion'),

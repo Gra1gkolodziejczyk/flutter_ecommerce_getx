@@ -1,4 +1,4 @@
-import 'package:e_commerce_front_getx/core/authentification/CacheManager.dart';
+import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import 'package:e_commerce_front_getx/routes/app_routes.dart';
 import '../../../core/app_export.dart';
 import '../../../data/api_client/api_client.dart';
@@ -8,8 +8,8 @@ import '../model/home_screen_model.dart';
 
 class HomeScreenController extends GetxController with CacheManager {
   var isLogged = false.obs;
-  final ProductRepository _productsRepository = Get.find();
-  final CategoriesRepository _categoriesRepository = Get.find();
+  final ProductRepository productsRepository = Get.find();
+  final CategoriesRepository categoriesRepository = Get.find();
   // RxList<ProductResponseModel> productsList = <ProductResponseModel>[].obs;
   // RxList<CategoriesResponseModel> categoriesList =
   //     <CategoriesResponseModel>[].obs;
@@ -30,7 +30,7 @@ class HomeScreenController extends GetxController with CacheManager {
 
   // void getProductsForCategory(String? id) async {
   //   var productsResponse =
-  //       await _productsRepository.getProduct(ProductRequestModel(), id!);
+  //       await productsRepository.getProduct(ProductRequestModel(), id!);
 
   //   if (productsResponse.isNotEmpty) {
   //     productsList.value = productsResponse;
@@ -39,7 +39,7 @@ class HomeScreenController extends GetxController with CacheManager {
 
   // void getCategoriesAndProducts() async {
   //   var categoriesResponse =
-  //       await _categoriesRepository.getCategories(CategoriesRequestModel());
+  //       await categoriesRepository.getCategories(CategoriesRequestModel());
 
   //   if (categoriesResponse.isNotEmpty) {
   //     categoriesList.value = categoriesResponse;
@@ -57,10 +57,10 @@ class HomeScreenController extends GetxController with CacheManager {
 
   void getCategoriesWithProducts() async {
     var categoriesResponse =
-        await _categoriesRepository.getCategories(CategoriesRequestModel());
+        await categoriesRepository.getCategories(CategoriesRequestModel());
     var respList = <CategoriesWithProductModel>[];
     for (var i = 0; i < categoriesResponse.length; i++) {
-      var products = await _productsRepository.getProduct(
+      var products = await productsRepository.getProduct(
           ProductRequestModel(), categoriesResponse[i].id!);
       respList.add(CategoriesWithProductModel(
           id: categoriesResponse[i].id,
@@ -72,7 +72,7 @@ class HomeScreenController extends GetxController with CacheManager {
 
   void logOut() async {
     isLogged.value = false;
-    removeJwt();
-    Get.offNamed(AppRoutes.initialRoute);
+    await removeJwt();
+    await Get.offNamed(AppRoutes.initialRoute);
   }
 }
