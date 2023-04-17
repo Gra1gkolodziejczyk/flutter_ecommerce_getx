@@ -18,14 +18,14 @@ class AuthentificationManager extends GetxController with CacheManager {
 
   void login(String? jwt) async {
     isLogged.value = true;
-    print(saveJwt(jwt));
+    print(jwt);
+    print(storage.read('jwt'));
     await saveJwt(jwt);
     await Get.toNamed(AppRoutes.profile);
   }
 
   void register(String? jwt) async {
     isLogged.value = true;
-    print(saveJwt(jwt));
     await saveJwt(jwt);
     await Get.toNamed(AppRoutes.profile);
   }

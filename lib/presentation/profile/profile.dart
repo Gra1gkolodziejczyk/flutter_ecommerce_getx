@@ -28,7 +28,7 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                     return Column(
                       children: [
                         Text(
-                          '${controller.userModel[index].name}',
+                          '${controller.userModel[index]?.name}',
                           style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,

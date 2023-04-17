@@ -15,7 +15,7 @@ class LoginScreen extends GetWidget<LoginScreenController> {
       drawer: const NavigationDrawerMenu(),
       backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           child: Column(
             children: [
               Image.asset(
@@ -46,7 +46,7 @@ class LoginScreen extends GetWidget<LoginScreenController> {
                           labelText: "Mot de passe",
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: () {
                           if (controller.formKeyLogin.currentState!
@@ -75,6 +75,17 @@ class LoginScreen extends GetWidget<LoginScreenController> {
                             ),
                           ),
                         ],
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.toNamed(AppRoutes.resetPassword);
+                        },
+                        child: const Text(
+                          "Mot de passe oublié ?",
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
+                        ),
                       ),
                     ],
                   ),

@@ -9,7 +9,7 @@ class UserResponseModel {
     this.name,
     this.firstname,
     this.email,
-    this.password,
+    this.role,
     this.jwt,
   });
 
@@ -17,7 +17,7 @@ class UserResponseModel {
   String? name;
   String? firstname;
   String? email;
-  String? password;
+  String? role;
   String? jwt;
 
   factory UserResponseModel.fromJson(Map<String, dynamic> json) =>

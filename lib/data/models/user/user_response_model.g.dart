@@ -12,7 +12,7 @@ UserResponseModel _$UserResponseModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       firstname: json['firstname'] as String?,
       email: json['email'] as String?,
-      password: json['password'] as String?,
+      role: json['role'] as String?,
       jwt: json['jwt'] as String?,
     );
 
@@ -22,6 +22,6 @@ Map<String, dynamic> _$UserResponseModelToJson(UserResponseModel instance) =>
       'name': instance.name,
       'firstname': instance.firstname,
       'email': instance.email,
-      'password': instance.password,
+      'role': instance.role,
       'jwt': instance.jwt,
     };
