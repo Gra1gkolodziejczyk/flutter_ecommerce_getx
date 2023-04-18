@@ -5,18 +5,10 @@ part 'panier_request_model.g.dart';
 @JsonSerializable()
 class PanierRequestModel {
   PanierRequestModel({
-    this.id,
-    this.userId,
-    this.price,
-    this.isPaid,
-    this.createAt,
+    this.productId,
   });
 
-  String? id;
-  String? userId;
-  String? price;
-  String? isPaid;
-  String? createAt;
+  String? productId;
 
   factory PanierRequestModel.fromJson(Map<String, dynamic> json) =>
       _$PanierRequestModelFromJson(json);
