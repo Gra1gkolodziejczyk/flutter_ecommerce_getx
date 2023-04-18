@@ -108,6 +108,14 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                             decoration:
                                                                 TextDecoration
                                                                     .lineThrough,
+                                                            decorationColor:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    89,
+                                                                    56,
+                                                                    56),
+                                                            decorationThickness:
+                                                                1.8,
                                                             fontSize: 16,
                                                             fontWeight:
                                                                 FontWeight.bold,
