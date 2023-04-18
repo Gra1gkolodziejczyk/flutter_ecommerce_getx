@@ -31,7 +31,7 @@ class PanierRepository with CacheManager {
     }
   }
 
-  Future<PanierResponseModel?> getPanier(PanierRequestModel model) async {
+  Future<PanierResponseModel?> getMyPanier(PanierRequestModel model) async {
     var response =
         await dio.get('${ApiClient.panierUrl}/my-cart', data: model.toJson());
     if (response.statusCode == 200) {
