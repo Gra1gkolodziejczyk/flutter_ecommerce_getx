@@ -8,10 +8,13 @@ import 'package:e_commerce_front_getx/data/models/user/user_response_model.dart'
 import 'package:e_commerce_front_getx/routes/app_routes.dart';
 import '../../core/app_export.dart';
 import '../../core/authentification/cache_manager.dart';
+import '../models/address/address_request_model.dart';
+import '../models/address/address_response_model.dart';
 
 part './product_repository/product_repository.dart';
 part './categories_repository/categories_repository.dart';
 part './user_repository/user_repository.dart';
+part './adresse_repository/adresse_repository.dart';
 
 final storage = GetStorage();
 
@@ -70,4 +73,7 @@ class ApiClient with CacheManager {
 
   // favorites
   static const String favorisUrl = '/favoris';
+
+  //adresse
+  static const String addressUrl = '/address';
 }
