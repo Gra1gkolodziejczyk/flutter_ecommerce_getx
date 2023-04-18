@@ -20,13 +20,13 @@ class AuthentificationManager extends GetxController with CacheManager {
   void login(String? jwt) async {
     isLogged.value = true;
     await saveJwt(jwt);
-    await Get.toNamed(AppRoutes.profile);
+    await Get.toNamed(AppRoutes.initialRoute);
   }
 
   void register(String? jwt) async {
     isLogged.value = true;
     await saveJwt(jwt);
-    await Get.toNamed(AppRoutes.profile);
+    await Get.toNamed(AppRoutes.initialRoute);
   }
 
   void checkLoginStatus() async {
@@ -34,7 +34,7 @@ class AuthentificationManager extends GetxController with CacheManager {
     if (token == null) {
       Get.toNamed(AppRoutes.login);
     } else {
-      Get.toNamed(AppRoutes.profile);
+      Get.toNamed(AppRoutes.initialRoute);
     }
   }
 }
