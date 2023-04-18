@@ -55,6 +55,7 @@ class RegisterScreen extends GetWidget<RegisterScreenController> {
                         child: TextFormField(
                           validator: controller.validateEmail,
                           controller: controller.email,
+                          autofocus: false,
                           decoration: const InputDecoration(
                             labelText: "E-mail",
                           ),

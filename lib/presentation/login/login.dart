@@ -33,6 +33,7 @@ class LoginScreen extends GetWidget<LoginScreenController> {
                       TextFormField(
                         validator: controller.validateEmail,
                         controller: controller.email,
+                        autofocus: false,
                         decoration: const InputDecoration(
                           labelText: "E-mail",
                         ),
