@@ -56,15 +56,14 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                       .products
                                       ?.length,
                                   itemBuilder: (context, index2) {
-                                    return Column(
-                                      children: [
-                                        controller
-                                                    .categoriesWithProduct[
-                                                        index]
-                                                    .products![index2]
-                                                    .reduction !=
-                                                0
-                                            ? Stack(
+                                    return controller
+                                                .categoriesWithProduct[index]
+                                                .products![index2]
+                                                .reduction !=
+                                            0
+                                        ? Column(
+                                            children: [
+                                              Stack(
                                                 children: [
                                                   Image.network(
                                                     '${controller.categoriesWithProduct[index].products![index2].image}',
@@ -88,58 +87,130 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                     ),
                                                   ),
                                                 ],
-                                              )
-                                            : Image.network(
+                                              ),
+                                              SizedBox(
+                                                width: 250,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    Text(
+                                                      '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
+                                                      style: text,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          '${controller.categoriesWithProduct[index].products![index2].price}€  ',
+                                                          style:
+                                                              const TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .lineThrough,
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    89,
+                                                                    56,
+                                                                    56),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          '${controller.getPriceWithReduc(controller.categoriesWithProduct[index].products![index2].price, controller.categoriesWithProduct[index].products![index2].reduction)} €',
+                                                          style: text,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      ElevatedButton(
+                                                        style: bg,
+                                                        child: Text(
+                                                          "Voir détails",
+                                                          style: text,
+                                                        ),
+                                                        onPressed: () {},
+                                                      ),
+                                                      ElevatedButton(
+                                                        onPressed: () {},
+                                                        style: bg,
+                                                        child: Text(
+                                                          "Ajouter au panier",
+                                                          style: text,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          )
+                                        : Column(
+                                            children: [
+                                              Image.network(
                                                 '${controller.categoriesWithProduct[index].products![index2].image}',
                                                 width: 300,
                                                 height: 300,
                                               ),
-                                        SizedBox(
-                                          width: 250,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text(
-                                                '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
-                                                style: text,
+                                              SizedBox(
+                                                width: 250,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    Text(
+                                                      '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
+                                                      style: text,
+                                                    ),
+                                                    Text(
+                                                      '${controller.getPriceWithReduc(controller.categoriesWithProduct[index].products![index2].price, controller.categoriesWithProduct[index].products![index2].reduction)} €',
+                                                      style: text,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                              Text(
-                                                '${controller.getPriceWithReduc(controller.categoriesWithProduct[index].products![index2].price, controller.categoriesWithProduct[index].products![index2].reduction)} €',
-                                                style: text,
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      ElevatedButton(
+                                                        style: bg,
+                                                        child: Text(
+                                                          "Voir détails",
+                                                          style: text,
+                                                        ),
+                                                        onPressed: () {},
+                                                      ),
+                                                      ElevatedButton(
+                                                        onPressed: () {},
+                                                        style: bg,
+                                                        child: Text(
+                                                          "Ajouter au panier",
+                                                          style: text,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
                                             ],
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                ElevatedButton(
-                                                  style: bg,
-                                                  child: Text(
-                                                    "Voir détails",
-                                                    style: text,
-                                                  ),
-                                                  onPressed: () {},
-                                                ),
-                                                ElevatedButton(
-                                                  onPressed: () {},
-                                                  style: bg,
-                                                  child: Text(
-                                                    "Ajouter au panier",
-                                                    style: text,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
+                                          );
                                   },
                                 ),
                               ),
