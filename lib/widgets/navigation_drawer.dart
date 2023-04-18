@@ -48,7 +48,7 @@ class NavigationDrawerMenu extends GetWidget<HomeScreenController> {
                 ),
               ),
               onTap: () {
-                Get.toNamed(AppRoutes.login);
+                Get.toNamed(AppRoutes.profile);
               },
             ),
             ListTile(
