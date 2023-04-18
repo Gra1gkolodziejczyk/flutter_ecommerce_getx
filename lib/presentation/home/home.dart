@@ -58,11 +58,42 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                   itemBuilder: (context, index2) {
                                     return Column(
                                       children: [
-                                        Image.network(
-                                          '${controller.categoriesWithProduct[index].products![index2].image}',
-                                          width: 300,
-                                          height: 300,
-                                        ),
+                                        controller
+                                                    .categoriesWithProduct[
+                                                        index]
+                                                    .products![index2]
+                                                    .reduction !=
+                                                0
+                                            ? Stack(
+                                                children: [
+                                                  Image.network(
+                                                    '${controller.categoriesWithProduct[index].products![index2].image}',
+                                                    width: 300,
+                                                    height: 300,
+                                                  ),
+                                                  Positioned(
+                                                    top: 20,
+                                                    left: 0,
+                                                    child: Container(
+                                                      color: Colors.red,
+                                                      child: Text(
+                                                        '${controller.categoriesWithProduct[index].products![index2].reduction}% de réduction',
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : Image.network(
+                                                '${controller.categoriesWithProduct[index].products![index2].image}',
+                                                width: 300,
+                                                height: 300,
+                                              ),
                                         SizedBox(
                                           width: 250,
                                           child: Row(
