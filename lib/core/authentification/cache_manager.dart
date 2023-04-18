@@ -15,6 +15,19 @@ mixin CacheManager {
   Future<void> removeJwt() async {
     await storage.remove('jwt');
   }
+
+  Future<bool> savePanier(String? panier) async {
+    await storage.write('panier', panier);
+    return true;
+  }
+
+  String? getPanier() {
+    return storage.read('panier');
+  }
+
+  Future<void> removePanier() async {
+    await storage.remove('panier');
+  }
 }
 
 enum CacheManagerKey { jwt }
