@@ -32,7 +32,7 @@ class AuthentificationManager extends GetxController with CacheManager {
   void checkLoginStatus() async {
     final token = await getJwt();
     if (token == null) {
-      Get.toNamed(AppRoutes.login);
+      Get.toNamed(AppRoutes.profile);
     } else {
       Get.toNamed(AppRoutes.initialRoute);
     }
