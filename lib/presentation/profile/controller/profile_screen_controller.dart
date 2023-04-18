@@ -8,7 +8,7 @@ import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
 class ProfileScreenController extends GetxController {
   final UserRepository _userRepository = Get.find();
 
-  RxList<UserModel?> userModel = <UserModel>[].obs;
+  Rx<UserModel?> userModel = UserModel().obs;
 
   @override
   void onInit() {
@@ -22,6 +22,12 @@ class ProfileScreenController extends GetxController {
   }
 
   void getUser() async {
-    await _userRepository.getUser(UserRequestModel());
+    var user = await _userRepository.getUser(UserRequestModel());
+    userModel.value = UserModel(
+        id: user?.id,
+        email: user?.email,
+        name: user?.name,
+        firstname: user?.firstname,
+        role: user?.role);
   }
 }

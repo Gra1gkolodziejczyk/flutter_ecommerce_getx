@@ -20,25 +20,12 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
           children: [
             Obx(
               () => SizedBox(
-                height: MediaQuery.of(context).size.height - 149,
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: controller.userModel.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Text(
-                          '${controller.userModel[index]?.name}',
-                          style: const TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
+                  height: MediaQuery.of(context).size.height - 149,
+                  child: Column(
+                    children: [
+                      Text('Bonjour ${controller.userModel.value?.firstname}')
+                    ],
+                  )),
             ),
           ],
         ),
