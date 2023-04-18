@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
 import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
+import 'package:e_commerce_front_getx/data/models/productOnCart/productOnCart_response_model.dart';
+import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
 import '../../../core/app_export.dart';
 import '../../../core/authentification/authentification_manager.dart';
 import '../../../data/api_client/api_client.dart';
@@ -16,10 +18,12 @@ class HomeScreenController extends GetxController with CacheManager {
       <CategoriesWithProductModel>[].obs;
   final price = String;
   final reduc = Int;
+  final product = ProductResponseModel();
 
   @override
   void onInit() {
     super.onInit();
+    createPanier();
     getCategoriesWithProducts();
   }
 
@@ -51,5 +55,24 @@ class HomeScreenController extends GetxController with CacheManager {
 
   void logOut() async {
     authentificationManager.logOut();
+  }
+
+  Future<bool> addToCart(product) async {
+    var productOnCart = ProductOnCartResponseModel(
+      id: product.id,
+      brand: product.brand,
+      description: product.description,
+      category: product.category,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      reduction: product.reduction,
+      size: product.size,
+      quantity: 1,
+    );
+    final response = await addPanier(productOnCart);
+    getPanier();
+    getLength();
+    return response;
   }
 }

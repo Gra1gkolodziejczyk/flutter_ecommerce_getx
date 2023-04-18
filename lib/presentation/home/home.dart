@@ -152,7 +152,14 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                         onPressed: () {},
                                                       ),
                                                       ElevatedButton(
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          controller.addToCart(
+                                                              controller
+                                                                      .categoriesWithProduct[
+                                                                          index]
+                                                                      .products![
+                                                                  index2]);
+                                                        },
                                                         style: bg,
                                                         child: Text(
                                                           "Ajouter au panier",
@@ -206,7 +213,14 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                         onPressed: () {},
                                                       ),
                                                       ElevatedButton(
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          controller.addToCart(
+                                                              controller
+                                                                      .categoriesWithProduct[
+                                                                          index]
+                                                                      .products![
+                                                                  index2]);
+                                                        },
                                                         style: bg,
                                                         child: Text(
                                                           "Ajouter au panier",
