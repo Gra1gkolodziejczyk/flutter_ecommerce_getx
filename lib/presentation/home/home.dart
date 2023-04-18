@@ -74,7 +74,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                 style: text,
                                               ),
                                               Text(
-                                                '${controller.categoriesWithProduct[index].products![index2].price} €',
+                                                '${controller.getPriceWithReduc(controller.categoriesWithProduct[index].products![index2].price, controller.categoriesWithProduct[index].products![index2].reduction)} €',
                                                 style: text,
                                               ),
                                             ],

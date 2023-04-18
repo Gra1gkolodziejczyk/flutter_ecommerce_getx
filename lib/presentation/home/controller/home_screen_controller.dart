@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import '../../../core/app_export.dart';
 import '../../../core/authentification/authentification_manager.dart';
@@ -12,6 +14,8 @@ class HomeScreenController extends GetxController with CacheManager {
   final CategoriesRepository categoriesRepository = Get.find();
   RxList<CategoriesWithProductModel> categoriesWithProduct =
       <CategoriesWithProductModel>[].obs;
+  final price = String;
+  final reduc = Int;
 
   @override
   void onInit() {
@@ -37,6 +41,12 @@ class HomeScreenController extends GetxController with CacheManager {
           products: products));
     }
     categoriesWithProduct.value = respList;
+  }
+
+  String getPriceWithReduc(price, reduc) {
+    var percent = double.parse(price) * reduc / 100;
+    var newPrice = double.parse(price) - percent;
+    return newPrice.toStringAsFixed(2);
   }
 
   void logOut() async {
