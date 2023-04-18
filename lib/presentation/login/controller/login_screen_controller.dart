@@ -28,7 +28,6 @@ class LoginScreenController extends GetxController with CacheManager {
         .login(UserRequestModel(email: email.text, password: password.text));
     if (response != null) {
       authentificationManager.login(response.jwt);
-      saveJwt(jwt);
     } else {
       throw Exception('Error jwt');
     }

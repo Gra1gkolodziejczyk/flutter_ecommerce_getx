@@ -38,7 +38,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   json_serializable: ^6.6.1
   json_annotation: ^4.8.0
-  dio: ^5.1.1
+  dio: ^5.0.1
   build_runner: ^2.3.3
   get_storage: ^2.1.1
   string_extensions: ^0.6.10

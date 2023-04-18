@@ -1,4 +1,3 @@
-import '../../routes/app_routes.dart';
 import '../app_export.dart';
 
 mixin CacheManager {
@@ -10,20 +9,11 @@ mixin CacheManager {
   }
 
   String? getJwt() {
-    final jwt = storage.read('jwt');
-    return jwt;
+    return storage.read('jwt');
   }
 
   Future<void> removeJwt() async {
     await storage.remove('jwt');
-  }
-
-  void checkLoginStatus() {
-    if (getJwt() == null) {
-      Get.toNamed(AppRoutes.login);
-    } else {
-      Get.toNamed(AppRoutes.profile);
-    }
   }
 }
 
