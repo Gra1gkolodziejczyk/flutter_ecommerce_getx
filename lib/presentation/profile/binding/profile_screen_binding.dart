@@ -8,5 +8,6 @@ class ProfileScreenBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => ProfileScreenController());
     Get.lazyPut(() => UserRepository());
+    Get.lazyPut(() => AddressRepository());
   }
 }
