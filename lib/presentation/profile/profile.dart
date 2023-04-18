@@ -20,12 +20,31 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
           children: [
             Obx(
               () => SizedBox(
-                  height: MediaQuery.of(context).size.height - 149,
-                  child: Column(
-                    children: [
-                      Text('Bonjour ${controller.userModel.value?.firstname}')
-                    ],
-                  )),
+                height: MediaQuery.of(context).size.height - 149,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text('firstname :'),
+                        Text(' ${controller.userModel.value?.firstname}'),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text('name :'),
+                        Text(' ${controller.userModel.value?.name}'),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text('email :'),
+                        Text(' ${controller.userModel.value?.email}'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
