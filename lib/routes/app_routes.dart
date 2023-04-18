@@ -41,7 +41,7 @@ class AppRoutes {
     ),
     GetPage(
       name: panier,
-      page: () => const PanierScreen(),
+      page: () => PanierScreen(),
       binding: PanierScreenBinding(),
       middlewares: [AuthentificationMiddleware()],
     ),
