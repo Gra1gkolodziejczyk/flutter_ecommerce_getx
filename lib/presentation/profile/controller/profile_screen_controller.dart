@@ -1,13 +1,36 @@
+import 'package:e_commerce_front_getx/presentation/profile/model/profile_screen_model.dart';
+
 import '../../../core/app_export.dart';
 
+import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
+import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
+
 class ProfileScreenController extends GetxController {
+  final UserRepository _userRepository = Get.find();
+  final AddressRepository _addressRepository = Get.find();
+
+  Rx<UserModel?> userModel = UserModel().obs;
 
   @override
   void onInit() {
     super.onInit();
+    getUser();
   }
+
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void getUser() async {
+    var user = await _userRepository.getUser(UserRequestModel());
+    var adress = await _addressRepository.getMyAddress();
+    userModel.value = UserModel(
+        id: user?.id,
+        email: user?.email,
+        name: user?.name,
+        firstname: user?.firstname,
+        role: user?.role,
+        address: adress);
   }
 }
