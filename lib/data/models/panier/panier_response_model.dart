@@ -17,8 +17,8 @@ class PanierResponseModel {
   String? id;
   String? userId;
   String? price;
-  String? isPaid;
-  String? createAt;
+  bool? isPaid;
+  DateTime? createAt;
   List<ProductOnCartResponseModel>? products;
 
   factory PanierResponseModel.fromJson(Map<String, dynamic> json) =>

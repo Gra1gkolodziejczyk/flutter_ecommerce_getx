@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class PanierInfo {
   PanierInfo({this.id, this.userId, this.price, this.createAt, this.isPaid});
 
