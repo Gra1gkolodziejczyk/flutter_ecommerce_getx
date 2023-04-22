@@ -8,5 +8,6 @@ class HomeScreenBinding extends Bindings {
     Get.lazyPut(() => HomeScreenController());
     Get.lazyPut(() => ProductRepository());
     Get.lazyPut(() => CategoriesRepository());
+    Get.lazyPut(() => PanierRepository());
   }
 }

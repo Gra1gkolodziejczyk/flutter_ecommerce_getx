@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
+import 'package:e_commerce_front_getx/data/models/panier/panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/productOnCart/productOnCart_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
 import '../../../core/app_export.dart';
@@ -14,6 +15,8 @@ class HomeScreenController extends GetxController with CacheManager {
   final ProductRepository productsRepository = Get.find();
   final AuthentificationManager authentificationManager = Get.find();
   final CategoriesRepository categoriesRepository = Get.find();
+  final PanierRepository panierRepository = Get.find();
+
   RxList<CategoriesWithProductModel> categoriesWithProduct =
       <CategoriesWithProductModel>[].obs;
   final price = String;
@@ -57,7 +60,22 @@ class HomeScreenController extends GetxController with CacheManager {
     authentificationManager.logOut();
   }
 
-  Future<bool> addToCart(product) async {
+  addToCart(product) async {
+    var jwt = getJwt();
+    if (jwt == null) {
+      await addToLocalCart(product);
+    } else {
+      await addToOnlineCart(product);
+    }
+    print(getLength());
+  }
+
+  addToOnlineCart(product) async {
+    await panierRepository.addToCart(PanierRequestModel(productId: product.id));
+    await addToLocalCart(product);
+  }
+
+  addToLocalCart(product) async {
     var productOnCart = ProductOnCartResponseModel(
       id: product.id,
       brand: product.brand,
@@ -70,9 +88,6 @@ class HomeScreenController extends GetxController with CacheManager {
       size: product.size,
       quantity: 1,
     );
-    final response = await addPanier(productOnCart);
-    getPanier();
-    getLength();
-    return response;
+    await addLocalCart(productOnCart);
   }
 }

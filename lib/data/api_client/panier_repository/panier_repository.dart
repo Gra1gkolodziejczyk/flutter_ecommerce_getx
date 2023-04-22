@@ -11,7 +11,9 @@ class PanierRepository with CacheManager {
     }
   }
 
-  Future<PanierResponseModel?> convertToCart(PanierRequestModel model) async {
+  Future<PanierResponseModel?> convertToCart(
+      ConverPanierRequestModel model) async {
+    print(model);
     var response = await dio.post('${ApiClient.panierUrl}/convert-to-cart',
         data: model.toJson());
     if (response.statusCode == 201) {
@@ -31,9 +33,8 @@ class PanierRepository with CacheManager {
     }
   }
 
-  Future<PanierResponseModel?> getMyPanier(PanierRequestModel model) async {
-    var response =
-        await dio.get('${ApiClient.panierUrl}/my-cart', data: model.toJson());
+  Future<PanierResponseModel?> getMyPanier() async {
+    var response = await dio.get('${ApiClient.panierUrl}/my-cart');
     if (response.statusCode == 200) {
       return PanierResponseModel.fromJson(response.data);
     } else {

@@ -43,7 +43,6 @@ class AppRoutes {
       name: panier,
       page: () => const PanierScreen(),
       binding: PanierScreenBinding(),
-      middlewares: [AuthentificationMiddleware()],
     ),
     GetPage(
       name: login,

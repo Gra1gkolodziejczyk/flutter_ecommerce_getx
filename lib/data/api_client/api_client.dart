@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_front_getx/data/models/convertPanier/convert_panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/panier/panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/panier/panier_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/products/product_request_model.dart';
@@ -37,6 +38,9 @@ class ApiClient with CacheManager {
   }
 
   void initDioClient() {
+    //permet de suivre les redirection du back
+    dio.options.followRedirects = true;
+
     dio.interceptors.clear();
 
     dio.interceptors.add(
@@ -72,7 +76,7 @@ class ApiClient with CacheManager {
   static const String userUrl = '/users';
 
   // panier
-  static const String panierUrl = 'carts';
+  static const String panierUrl = '/carts';
 
   // favorites
   static const String favorisUrl = '/favoris';
