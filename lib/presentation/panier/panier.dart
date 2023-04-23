@@ -22,6 +22,7 @@ class PanierScreen extends GetWidget<PanierScreenController> {
         child: Obx(
           () => SizedBox(
               height: MediaQuery.of(context).size.height - 149,
+              width: 500,
               child: FutureBuilder<int?>(
                 future: controller.getCartLength(),
                 builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
