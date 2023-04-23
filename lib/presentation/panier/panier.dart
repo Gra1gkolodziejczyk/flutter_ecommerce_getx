@@ -82,10 +82,10 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 250,
+                                        width: 324,
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               '${controller.cartProduct[index].brand} ${controller.cartProduct[index].category}',
@@ -117,7 +117,13 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                             Text(
                                               'x${controller.cartProduct[index].quantity}',
                                               style: text,
-                                            )
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                controller.removePanier();
+                                              },
+                                              child: Icon(Icons.delete),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -131,10 +137,10 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                         height: 100,
                                       ),
                                       SizedBox(
-                                        width: 250,
+                                        width: 320,
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               '${controller.cartProduct[index].category} ${controller.cartProduct[index].brand} ',
@@ -147,7 +153,13 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                             Text(
                                               'x${controller.cartProduct[index].quantity}',
                                               style: text,
-                                            )
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                controller.removePanier();
+                                              },
+                                              child: Icon(Icons.delete),
+                                            ),
                                           ],
                                         ),
                                       ),
