@@ -13,12 +13,15 @@ import 'package:e_commerce_front_getx/data/models/address/address_response_model
 import 'package:e_commerce_front_getx/routes/app_routes.dart';
 import '../../core/app_export.dart';
 import '../../core/authentification/cache_manager.dart';
+import '../models/checkout/checkout_request_model.dart';
+import '../models/checkout/checkout_response_model.dart';
 
 part './product_repository/product_repository.dart';
 part './categories_repository/categories_repository.dart';
 part './user_repository/user_repository.dart';
 part './adresse_repository/adresse_repository.dart';
 part './panier_repository/panier_repository.dart';
+part './commandes_repository/commandes_repository.dart';
 
 final storage = GetStorage();
 
@@ -46,8 +49,8 @@ class ApiClient with CacheManager {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          if (await storage.hasData("jwt")) {
-            var token = await getJwt();
+          if (storage.hasData("jwt")) {
+            var token = getJwt();
             options.headers['Authorization'] = 'Bearer $token';
           }
           return handler.next(options);
@@ -83,4 +86,7 @@ class ApiClient with CacheManager {
 
   //adresse
   static const String addressUrl = '/address';
+
+  //commande
+  static const String commandesUrl = '/orders';
 }

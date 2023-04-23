@@ -42,6 +42,7 @@ dependencies:
   build_runner: ^2.3.3
   get_storage: ^2.1.1
   string_extensions: ^0.6.10
+  flutter_stripe: ^9.1.1
 
 dev_dependencies:
   flutter_test:

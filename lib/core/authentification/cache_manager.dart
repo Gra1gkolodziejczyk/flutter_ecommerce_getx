@@ -23,6 +23,7 @@ mixin CacheManager {
   }
 
   Future<bool> createPanier() async {
+    print('create Cart');
     List<ProductOnCartResponseModel?> panierProducts = List.empty();
     PanierInfo panierInfo = PanierInfo(
         id: null, createAt: null, isPaid: false, price: "0", userId: null);
@@ -79,7 +80,7 @@ mixin CacheManager {
     //set Panier Products to storage
     produits = panier?.products;
     await storage.write('panierProduct', produits);
-    print('LOL');
+    print('add online cart');
   }
 
   Future<PanierResponseModel> getPanier() async {
