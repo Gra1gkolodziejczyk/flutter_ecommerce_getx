@@ -1,6 +1,7 @@
 import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/convertPanier/convert_panier_request_model.dart';
+import 'package:e_commerce_front_getx/data/models/panier/panier_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/productOnCart/productOnCart_response_model.dart';
 import 'package:e_commerce_front_getx/presentation/panier/model/panier_screen_model.dart';
 
@@ -16,21 +17,12 @@ class PanierScreenController extends GetxController with CacheManager {
       <ProductOnCartResponseModel>[].obs;
 
   Rx<PanierInfo?> panierInfo = PanierInfo().obs;
+  RxBool isCompare = false.obs;
 
   @override
   void onInit() {
     getAllMyCart();
     super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   String getPriceWithReduc(price, reduc) {
@@ -40,13 +32,10 @@ class PanierScreenController extends GetxController with CacheManager {
   }
 
   getAllMyCart() async {
-    var getCart = await getPanier();
     var jwt = getJwt();
-    if (jwt != null && getCart.products!.isEmpty) {
-      print('online');
-      await getMyOnlineCart();
+    if (jwt != null) {
+      await convertCart();
     } else {
-      print('local');
       getMyLocalPanier();
     }
   }
@@ -56,12 +45,17 @@ class PanierScreenController extends GetxController with CacheManager {
     if (jwt != null) {
       var getLocalCart = await getPanier();
       var getonlineCart = await panierRepository.getMyPanier();
-      if (getLocalCart.price == getonlineCart?.price) {
-        print('sameCart');
-      } else {
-        await convertCart();
-        getMyLocalPanier();
+      if (!isCompare.value) {
+        isCompare.value = true;
+        if (compareLocalAndOnlineCart(
+            getLocalCart.products, getonlineCart?.products)) {
+        } else {
+          await convertCart();
+          getMyLocalPanier();
+        }
       }
+    } else {
+      isCompare.value = false;
     }
   }
 
@@ -88,16 +82,10 @@ class PanierScreenController extends GetxController with CacheManager {
     panierInfo.value = info;
   }
 
-  getMyOnlineCart() async {
-    var response = await panierRepository.getMyPanier();
-    await addOnlineCart(response);
-    getMyLocalPanier();
-  }
-
   goToCheckout() async {
     var jwt = getJwt();
     if (jwt != null) {
-      print("go to checkout");
+      await Get.toNamed(AppRoutes.checkout);
     } else {
       await Get.toNamed(AppRoutes.login);
     }
@@ -131,6 +119,20 @@ class PanierScreenController extends GetxController with CacheManager {
         .removeToCart(PanierRequestModel(productId: product.id));
     print(response?.price);
     await addOnlineCart(response);
+  }
+
+  bool compareLocalAndOnlineCart(List<ProductOnCartResponseModel>? arr1,
+      List<ProductOnCartResponseModel>? arr2) {
+    if (arr1?.length != arr2?.length) {
+      return false;
+    }
+    for (int index = 0; index < arr1!.length; index++) {
+      if (!(arr2!.contains(arr1[index])) ||
+          arr2[index].quantity != arr1[index].quantity) {
+        return false;
+      }
+    }
+    return true;
   }
 
   Future<int?> getCartLength() async {
