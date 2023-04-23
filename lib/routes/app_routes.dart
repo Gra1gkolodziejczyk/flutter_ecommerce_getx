@@ -1,5 +1,8 @@
+import 'package:e_commerce_front_getx/presentation/checkout/checkout.dart';
+
 import '../core/app_export.dart';
 import '../core/authentification/authentification_middleware.dart';
+import '../presentation/checkout/binding/checkout_screen_binding.dart';
 import '../presentation/commandes/binding/commandes_screen_binding.dart';
 import '../presentation/commandes/commandes.dart';
 import '../presentation/favoris/binding/favoris_screen_binding.dart';
@@ -26,6 +29,7 @@ class AppRoutes {
   static String resetPassword = '/resetPassword';
   static String favoris = '/favoris';
   static String commandes = '/commandes';
+  static String checkout = '/checkout';
 
   static List<GetPage> pages = [
     GetPage(
@@ -71,5 +75,9 @@ class AppRoutes {
       binding: CommandesScreenBinding(),
       middlewares: [AuthentificationMiddleware()],
     ),
+    GetPage(
+        name: checkout,
+        page: () => const CheckoutScreen(),
+        binding: CheckoutScreenBinding())
   ];
 }

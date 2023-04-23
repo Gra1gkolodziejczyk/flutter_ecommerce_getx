@@ -9,7 +9,9 @@ part of 'convert_panier_request_model.dart';
 ConverPanierRequestModel _$ConverPanierRequestModelFromJson(
         Map<String, dynamic> json) =>
     ConverPanierRequestModel(
-      products: json['products'] as List<ProductQuantityModel>?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => ProductQuantityModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ConverPanierRequestModelToJson(
