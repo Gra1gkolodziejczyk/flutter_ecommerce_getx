@@ -35,6 +35,7 @@ class HomeScreenController extends GetxController with CacheManager {
   void getCategoriesWithProducts() async {
     var categoriesResponse =
         await categoriesRepository.getCategories(CategoriesRequestModel());
+
     var respList = <CategoriesWithProductModel>[];
     for (var i = 0; i < categoriesResponse.length; i++) {
       var products = await productsRepository.getProduct(
@@ -73,6 +74,7 @@ class HomeScreenController extends GetxController with CacheManager {
     final response = await addPanier(productOnCart);
     getPanier();
     getLength();
+
     return response;
   }
 }

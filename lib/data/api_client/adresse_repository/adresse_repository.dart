@@ -1,15 +1,15 @@
 part of '../api_client.dart';
 
 class AddressRepository {
-  Future<List<AddressResponseModel>> getMyAddress() async {
+  Future<List<AddressResponseModel>> getAdress() async {
     var response = await dio.get('${ApiClient.addressUrl}/my-address');
     if (response.statusCode == 200) {
-      List<AddressResponseModel> adresseList = (response.data as List)
+      List<AddressResponseModel> responce = (response.data as List)
           .map((e) => AddressResponseModel.fromJson(e))
           .toList();
-      return adresseList;
+      return responce;
     } else {
-      throw Exception('Error get categories');
+      throw Exception('Error get address');
     }
   }
 

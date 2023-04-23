@@ -30,4 +30,18 @@ class UserRepository with CacheManager {
       throw Exception('Error get user');
     }
   }
+
+  /* Future<List<AddressResponseModel?>> getAdresse(
+      AddressRequestModel model) async {
+    var response = await dio.get('${ApiClient.addressUrl}/my-address',
+        data: model.toJson());
+    if (response.statusCode == 200) {
+      List<AddressResponseModel> responce = (response.data as List)
+          .map((e) => AddressResponseModel.fromJson(e))
+          .toList();
+      return responce;
+    } else {
+      throw Exception('Error get address');
+    }
+  } */
 }
