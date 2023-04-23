@@ -105,6 +105,37 @@ mixin CacheManager {
     return resp?.length;
   }
 
+  removeItem(ProductOnCartResponseModel? article) async {
+    var panier = storage.read<List>('panierProduct');
+    var infoJSON = storage.read('panierInfo');
+    var info = PanierInfo.fromJson(json.decode(infoJSON));
+
+    //changement du prix du panier
+    var percent = double.parse(article!.price!) * article.reduction! / 100;
+    var newPrice = double.parse(article.price!) - percent;
+    var textPrice = double.parse(info.price!) - newPrice;
+    textPrice < 0 ? textPrice = 0 : textPrice = textPrice;
+    info.price = textPrice.toStringAsFixed(2);
+    infoJSON = jsonEncode(info.toJson());
+    await storage.write('panierInfo', infoJSON);
+
+    bool more1quantity = false;
+    for (var i = 0; i < panier!.length; i++) {
+      if (panier[i].id == article.id && panier[i].quantity > 1) {
+        panier[i].quantity--;
+        more1quantity = true;
+      }
+    }
+    if (more1quantity) {
+      await storage.write('panierProduct', panier);
+      return true;
+    } else {
+      panier.remove(article);
+      await storage.write('panierProduct', panier);
+      return true;
+    }
+  }
+
   Future<void> removePanier() async {
     await storage.remove('panierProduct');
     await storage.remove('panierInfo');

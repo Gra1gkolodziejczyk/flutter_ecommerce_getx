@@ -22,7 +22,7 @@ class PanierScreen extends GetWidget<PanierScreenController> {
         child: Obx(
           () => SizedBox(
               height: MediaQuery.of(context).size.height - 149,
-              width: 500,
+              width: MediaQuery.of(context).size.width,
               child: FutureBuilder<int?>(
                 future: controller.getCartLength(),
                 builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
@@ -83,15 +83,13 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                         ],
                                       ),
                                       SizedBox(
-                                        width: 324,
+                                        width:
+                                            MediaQuery.sizeOf(context).width -
+                                                100,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              '${controller.cartProduct[index].brand} ${controller.cartProduct[index].category}',
-                                              style: text,
-                                            ),
                                             Row(
                                               children: [
                                                 Text(
@@ -119,11 +117,16 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                               'x${controller.cartProduct[index].quantity}',
                                               style: text,
                                             ),
-                                            ElevatedButton(
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                size: 20,
+                                              ),
                                               onPressed: () {
-                                                controller.removePanier();
+                                                controller.removeItemFromCart(
+                                                    controller
+                                                        .cartProduct[index]);
                                               },
-                                              child: Icon(Icons.delete),
                                             ),
                                           ],
                                         ),
@@ -138,15 +141,13 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                         height: 100,
                                       ),
                                       SizedBox(
-                                        width: 320,
+                                        width:
+                                            MediaQuery.sizeOf(context).width -
+                                                100,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              '${controller.cartProduct[index].category} ${controller.cartProduct[index].brand} ',
-                                              style: text,
-                                            ),
                                             Text(
                                               '${controller.getPriceWithReduc(controller.cartProduct[index].price, controller.cartProduct[index].reduction)} €',
                                               style: text,
@@ -155,11 +156,17 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                               'x${controller.cartProduct[index].quantity}',
                                               style: text,
                                             ),
-                                            ElevatedButton(
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                size: 20,
+                                              ),
                                               onPressed: () {
-                                                controller.removePanier();
+                                                controller.removeItemFromCart(
+                                                    controller
+                                                        .cartProduct[index]);
+                                                //controller.removePanier();
                                               },
-                                              child: Icon(Icons.delete),
                                             ),
                                           ],
                                         ),

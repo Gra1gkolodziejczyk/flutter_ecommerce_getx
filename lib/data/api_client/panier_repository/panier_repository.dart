@@ -13,7 +13,6 @@ class PanierRepository with CacheManager {
 
   Future<PanierResponseModel?> convertToCart(
       ConverPanierRequestModel model) async {
-    print(model);
     var response = await dio.post('${ApiClient.panierUrl}/convert-to-cart',
         data: model.toJson());
     if (response.statusCode == 201) {

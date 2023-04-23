@@ -5,6 +5,7 @@ import 'package:e_commerce_front_getx/data/models/productOnCart/productOnCart_re
 import 'package:e_commerce_front_getx/presentation/panier/model/panier_screen_model.dart';
 
 import '../../../core/app_export.dart';
+import '../../../data/models/panier/panier_request_model.dart';
 import '../../../data/models/productQuantity/product_quantity_panier_request_model.dart';
 import '../../../routes/app_routes.dart';
 
@@ -110,6 +111,25 @@ class PanierScreenController extends GetxController with CacheManager {
     }
     var arg = ConverPanierRequestModel(products: list.toList());
     var response = await panierRepository.convertToCart(arg);
+    await addOnlineCart(response);
+  }
+
+  removeItemFromCart(product) async {
+    var jwt = getJwt();
+    if (jwt != null) {
+      print('need to requets');
+      await removeOnlineCart(product);
+      getMyLocalPanier();
+    } else {
+      await removeItem(product);
+      getMyLocalPanier();
+    }
+  }
+
+  removeOnlineCart(product) async {
+    var response = await panierRepository
+        .removeToCart(PanierRequestModel(productId: product.id));
+    print(response?.price);
     await addOnlineCart(response);
   }
 
