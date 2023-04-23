@@ -58,7 +58,7 @@ class CheckoutScreenController extends GetxController with CacheManager {
 
   successCheckout() async {
     print('success');
-    await removePanier();
+    await createPanier();
     await Get.toNamed(AppRoutes.initialRoute);
     //aller page home
   }

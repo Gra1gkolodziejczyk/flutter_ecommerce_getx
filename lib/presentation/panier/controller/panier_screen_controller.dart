@@ -17,6 +17,7 @@ class PanierScreenController extends GetxController with CacheManager {
 
   Rx<PanierInfo?> panierInfo = PanierInfo().obs;
   RxBool isCompare = false.obs;
+  RxBool checkAfterCheckout = false.obs;
 
   @override
   void onInit() {
@@ -78,12 +79,17 @@ class PanierScreenController extends GetxController with CacheManager {
         isPaid: getCart.isPaid,
         price: getCart.price,
         userId: getCart.userId);
+    if (info.price == '0' && !checkAfterCheckout.value) {
+      cartProduct.value = getCart.products!;
+      checkAfterCheckout.value = true;
+    }
     panierInfo.value = info;
   }
 
   goToCheckout() async {
     var jwt = getJwt();
     if (jwt != null) {
+      checkAfterCheckout.value = false;
       await Get.toNamed(AppRoutes.checkout);
     } else {
       await Get.toNamed(AppRoutes.login);
