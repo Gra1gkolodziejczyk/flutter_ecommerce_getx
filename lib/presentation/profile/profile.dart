@@ -4,7 +4,6 @@ import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import 'controller/profile_screen_controller.dart';
-import '../../widgets/Capitalize.dart';
 
 class ProfileScreen extends GetWidget<ProfileScreenController> {
   const ProfileScreen({Key? key}) : super(key: key);

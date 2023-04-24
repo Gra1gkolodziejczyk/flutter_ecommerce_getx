@@ -13,6 +13,7 @@ class CheckoutScreenController extends GetxController with CacheManager {
   final AddressRepository _addressRepository = Get.find();
   RxList<AddressResponseModel> addressList = <AddressResponseModel>[].obs;
   RxString cartId = ''.obs;
+  RxString addressId = ''.obs;
 
   @override
   void onInit() {
@@ -59,5 +60,26 @@ class CheckoutScreenController extends GetxController with CacheManager {
     await createPanier();
     await Get.toNamed(AppRoutes.initialRoute);
     //aller page home
+  }
+
+  selectAddress(address) async {
+    addressId.value = address;
+    getAddressLenght();
+    print(addressId);
+  }
+
+  Future<int?> getAddressLenght() async {
+    print('refresh');
+    print(addressList.length);
+    if (addressList.isEmpty) {
+      await getInfo();
+      print('enter');
+    }
+    if (addressId.value == '') {
+      print('0');
+      return 0;
+    } else {
+      return addressList.length;
+    }
   }
 }
