@@ -142,7 +142,7 @@ class PanierScreen extends GetWidget<PanierScreenController> {
                                       ),
                                       SizedBox(
                                         width:
-                                            MediaQuery.sizeOf(context).width -
+                                            MediaQuery.of(context).size.width -
                                                 100,
                                         child: Row(
                                           mainAxisAlignment:
