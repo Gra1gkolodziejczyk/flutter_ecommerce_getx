@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce_front_getx/data/models/commandes/commandes_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/convertPanier/convert_panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/panier/panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/panier/panier_response_model.dart';

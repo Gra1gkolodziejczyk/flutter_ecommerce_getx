@@ -25,7 +25,6 @@ class CheckoutScreenController extends GetxController with CacheManager {
     cartId.value = getCart.id!;
     var address = await _addressRepository.getMyAddress();
     addressList.value = address;
-    print(addressList);
   }
 
   startCheckout() async {
@@ -57,7 +56,6 @@ class CheckoutScreenController extends GetxController with CacheManager {
   }
 
   successCheckout() async {
-    print('success');
     await createPanier();
     await Get.toNamed(AppRoutes.initialRoute);
     //aller page home
