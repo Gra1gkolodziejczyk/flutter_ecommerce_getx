@@ -9,6 +9,11 @@ import '../../widgets/Capitalize.dart';
 class ProfileScreen extends GetWidget<ProfileScreenController> {
   const ProfileScreen({Key? key}) : super(key: key);
 
+  final TextStyle text = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(255, 0, 0, 0));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +39,11 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                       ),
                       Row(
                         children: [
+                          Text('Profil : ', style: text),
+                        ],
+                      ),
+                      Row(
+                        children: [
                           Text(
                               'Prénom : ${controller.userModel.value?.firstname}'),
                         ],
@@ -48,6 +58,11 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                           Text('Email : ${controller.userModel.value?.email}'),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Text('Adresse : ', style: text),
+                        ],
+                      ),
                       SizedBox(
                         height: 250,
                         width: MediaQuery.of(context).size.width,
@@ -60,78 +75,46 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    color: Colors.red,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 1,
+                                      ),
+                                    ),
                                     child: Column(
                                       children: [
                                         Row(
                                           children: [
                                             Text(
-                                                'Adresse : ${controller.addressModel[index].addressNumber}'
+                                                '${controller.addressModel[index].addressName}')
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                '${controller.addressModel[index].userFirstName}'
+                                                ' ${controller.addressModel[index].userName}'),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                '${controller.addressModel[index].addressNumber}'
                                                 ' ${controller.addressModel[index].address}'),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Text(
-                                                'Code Postal : ${controller.addressModel[index].addressName}'),
+                                                '${controller.addressModel[index].postalCode}'),
                                           ],
                                         ),
                                         Row(
-                                          children: [Text("test")],
+                                          children: [
+                                            Text(
+                                                ' ${controller.addressModel[index].city}')
+                                          ],
                                         )
-                                        /* Row(
-                                          children: [
-                                            Text(
-                                                'Code Postal : ${controller.addressModel.value?.address?[0].postalCode} ${controller.addressModel.value?.address?[0].city?.toCapitalized()}'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Pays : ${controller.addressModel.value?.address?[0].country?.toCapitalized()}'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Télephone : ${controller.addressModel.value?.address?[0].tel}'),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    color: Colors.red,
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Adresse : ${controller.addressModel.value?.address?[1].addressNumber}'
-                                                ' ${controller.addressModel.value?.address?[1].addressName}'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Code Postal : ${controller.addressModel.value?.address?[1].postalCode} ${controller.addressModel.value?.address?[1].city?.toCapitalized()}'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Pays : ${controller.addressModel.value?.address?[1].country?.toCapitalized()}'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                                'Télephone : ${controller.addressModel.value?.address?[1].tel}'),
-                                          ],
-                                        ), */
                                       ],
                                     ),
                                   ),

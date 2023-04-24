@@ -5,7 +5,6 @@ import '../../../core/app_export.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/user/user_request_model.dart';
 
-import '../../../data/models/address/address_request_model.dart';
 import '../../../data/models/address/address_response_model.dart';
 
 class ProfileScreenController extends GetxController {
