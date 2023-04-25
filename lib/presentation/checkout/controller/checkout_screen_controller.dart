@@ -69,17 +69,14 @@ class CheckoutScreenController extends GetxController with CacheManager {
   }
 
   Future<int?> getAddressLenght() async {
-    print('refresh');
-    print(addressList.length);
+    //faire en sorte que ca appel 1 fois si il y a 0 adresse
     if (addressList.isEmpty) {
       await getInfo();
-      print('enter');
     }
     if (addressId.value == '') {
-      print('0');
-      return 0;
     } else {
-      return addressList.length;
+      print('pas daddress select');
     }
+    return addressList.length;
   }
 }
