@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+import '../../widgets/addAddress.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 
@@ -37,6 +38,7 @@ class CheckoutScreen extends GetWidget<CheckoutScreenController> {
                                 "Choisissez une adresse : ",
                                 style: text,
                               ),
+                              const Center(child: ModalWidget()),
                               SizedBox(
                                   height: 110,
                                   width: MediaQuery.of(context).size.width,
@@ -96,7 +98,11 @@ class CheckoutScreen extends GetWidget<CheckoutScreenController> {
                           );
                         } else {
                           return const Center(
-                              child: Text('Veuillez ajouter une adresse'));
+                            child: Column(children: [
+                              Text('Veuillez ajouter une adresse'),
+                              ModalWidget()
+                            ]),
+                          );
                         }
                       }),
                 ]),

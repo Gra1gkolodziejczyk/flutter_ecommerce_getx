@@ -28,6 +28,11 @@ class CheckoutScreenController extends GetxController with CacheManager {
     addressList.value = address;
   }
 
+  getAddress() async {
+    var address = await _addressRepository.getMyAddress();
+    addressList.value = address;
+  }
+
   startCheckout() async {
     var response = await commandesRepository.startCheckout(CheckoutRequestModel(
         cartID: cartId.value, addressID: addressList[0].id));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 
+import '../../widgets/addAddress.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import 'controller/profile_screen_controller.dart';
@@ -58,8 +59,23 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                         ],
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('Adresse : ', style: text),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.refresh,
+                                  size: 20,
+                                ),
+                                onPressed: () {
+                                  controller.getAdress();
+                                },
+                              ),
+                              const ModalWidget()
+                            ],
+                          )
                         ],
                       ),
                       SizedBox(

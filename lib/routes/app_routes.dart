@@ -78,6 +78,7 @@ class AppRoutes {
     GetPage(
         name: checkout,
         page: () => const CheckoutScreen(),
-        binding: CheckoutScreenBinding())
+        binding: CheckoutScreenBinding(),
+        middlewares: [AuthentificationMiddleware()])
   ];
 }
