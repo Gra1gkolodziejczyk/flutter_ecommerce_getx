@@ -174,7 +174,10 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                           "Voir détails",
                                                           style: text,
                                                         ),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          controller.goToDetails(controller
+                                                              .categoriesWithProduct[index].products![index2].id);
+                                                        },
                                                       ),
                                                       ElevatedButton(
                                                         onPressed: () {

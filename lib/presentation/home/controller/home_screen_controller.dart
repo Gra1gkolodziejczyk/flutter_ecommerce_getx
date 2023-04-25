@@ -88,6 +88,9 @@ class HomeScreenController extends GetxController with CacheManager {
   }
 
   goToDetails(String? productId) async {
-    await Get.toNamed(AppRoutes.details, parameters: {'productId': productId ?? ""});
+    await Get.toNamed(AppRoutes.details, parameters: {'productID': productId ?? ""});
   }
 }
+// arguments: {
+//  'movie_id': 10,
+// }

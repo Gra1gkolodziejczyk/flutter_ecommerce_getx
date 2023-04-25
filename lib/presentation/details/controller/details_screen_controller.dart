@@ -4,7 +4,7 @@ import 'package:e_commerce_front_getx/data/models/products/product_response_mode
 import '../../../core/app_export.dart';
 
 class DetailsScreenController extends GetxController {
-  final String productID = "";
+  late String productID = Get.parameters['productID'] ?? "";
   final ProductRepository productsRepository = Get.find();
   late ProductResponseModel product;
 
@@ -16,8 +16,8 @@ class DetailsScreenController extends GetxController {
   }
 
   void getProductById() async {
-    var parameters = Get.parameters;
-    if (parameters['productId'] != "") {
+    productID = Get.parameters['productID'] ?? "";
+    if (productID != "") {
       product = await productsRepository.getProductById(productID);
     }
     detailsModel.value = ProductResponseModel(
