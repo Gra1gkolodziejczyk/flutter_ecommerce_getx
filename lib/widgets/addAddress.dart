@@ -28,7 +28,7 @@ class _ModalWidgetState extends State<ModalWidget> {
         userName: _userName.text,
         civility: _civility == Gender.male ? 'Mr' : 'Ms');
 
-    var response = await addressRepository.createAddress(newAddress);
+    await addressRepository.createAddress(newAddress);
     Navigator.of(context).pop();
   }
 

@@ -38,10 +38,17 @@ class ProfileScreenController extends GetxController {
     );
   }
 
-  void getAdress() async {
+  getAdress() async {
     var adress = await _addressRepository.getAdress();
-    if (adress.isNotEmpty) {
-      addressModel.value = adress;
+    addressModel.value = adress;
+  }
+
+  Future<int?> getAddressLenght() async {
+    //faire en sorte que ca appel 1 fois si il y a 0 adresse
+    if (addressModel.isEmpty) {
+      await getAdress();
     }
+    print('refresh');
+    return addressModel.length;
   }
 }
