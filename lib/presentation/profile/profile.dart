@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
 
+import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import 'controller/profile_screen_controller.dart';
@@ -111,7 +111,7 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                         Row(
                                           children: [
                                             Text(
-                                                ' ${controller.addressModel[index].city}')
+                                                '${controller.addressModel[index].city}'),
                                           ],
                                         )
                                       ],
