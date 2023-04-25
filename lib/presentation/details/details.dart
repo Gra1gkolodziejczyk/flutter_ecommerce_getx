@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
-import '../../widgets/navigation_drawer.dart';
 import 'controller/details_screen_controller.dart';
 
 class DetailsScreen extends GetWidget<DetailsScreenController>
     with CacheManager {
   DetailsScreen({Key? key}) : super(key: key);
 
+  final TextStyle text = const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(255, 0, 0, 0));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      drawer: const NavigationDrawerMenu(),
       backgroundColor: const Color.fromARGB(255, 255, 253, 247),
       body: SafeArea(
         child: Column(
@@ -46,7 +49,7 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                           children: [
                             Row(
                               children: [
-                                const Text('marque: '),
+                                const Text('Marque: '),
                                 Text(
                                   '${controller.detailsModel.value!.brand}',
                                   style: const TextStyle(
@@ -56,33 +59,37 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                                 ),
                               ],
                             ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  const Text('Price: '),
-                                  Text(
-                                    '${controller.detailsModel.value!.price}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            Row(
+                              children: [
+                                Text(
+                                  '${controller.detailsModel.value!.price}€  ',
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.lineThrough,
+                                    decorationColor:
+                                        Color.fromARGB(255, 0, 0, 0),
+                                    decorationThickness: 1.8,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  '${controller.getPriceWithReduc(controller.detailsModel.value!.price, controller.detailsModel.value!.reduction)} €',
+                                  style: text,
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  const Text('Size: '),
-                                  Text(
-                                    '${controller.detailsModel.value!.size}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            Row(
+                              children: [
+                                const Text('Size: '),
+                                Text(
+                                  '${controller.detailsModel.value!.size}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -91,16 +98,15 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  const Text('reduction: '),
-                                  Text(
-                                    '${controller.detailsModel.value?.reduction}',
-                                  ),
-                                  const Text('€'),
-                                ],
-                              ),
+                            child: Row(
+                              children: [
+                                const Text('Reduction: '),
+                                Text(
+                                  '${controller.detailsModel.value?.reduction}',
+                                  style: text,
+                                ),
+                                const Text('%'),
+                              ],
                             ),
                           ),
                         ],
@@ -109,45 +115,35 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'description :',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Description :',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    '${controller.detailsModel.value?.description}',
-                                    style: const TextStyle(
-                                        fontSize: 10,
-                                        fontStyle: FontStyle.italic),
-                                  ),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  '${controller.detailsModel.value?.description}',
+                                  style: const TextStyle(
+                                      fontSize: 10,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              controller
-                                  .addToCart(controller.detailsModel.value);
-                            },
-                            child: const Text('Add To Cart'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('Page Home'),
-                          ),
-                        ],
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            controller.addToCart(controller.detailsModel.value);
+                          },
+                          child: const Text('Add To Cart'),
+                        ),
                       ),
                     ],
                   ),

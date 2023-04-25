@@ -43,6 +43,12 @@ class DetailsScreenController extends GetxController with CacheManager {
     );
   }
 
+  String getPriceWithReduc(price, reduc) {
+    var percent = double.parse(price) * reduc / 100;
+    var newPrice = double.parse(price) - percent;
+    return newPrice.toStringAsFixed(2);
+  }
+
   addToCart(product) async {
     var jwt = getJwt();
     if (jwt == null) {
