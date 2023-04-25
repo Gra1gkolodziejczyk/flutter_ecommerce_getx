@@ -15,6 +15,11 @@ class DetailsScreenController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   void getProductById() async {
     productID = Get.parameters['productID'] ?? "";
     if (productID != "") {
@@ -32,10 +37,5 @@ class DetailsScreenController extends GetxController {
       size: product.size,
       stock: product.stock,
     );
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }
