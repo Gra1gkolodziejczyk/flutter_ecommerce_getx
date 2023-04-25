@@ -4,6 +4,7 @@ import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import 'package:e_commerce_front_getx/data/models/panier/panier_request_model.dart';
 import 'package:e_commerce_front_getx/data/models/productOnCart/productOnCart_response_model.dart';
 import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
+import 'package:e_commerce_front_getx/routes/app_routes.dart';
 import '../../../core/app_export.dart';
 import '../../../core/authentification/authentification_manager.dart';
 import '../../../data/api_client/api_client.dart';
@@ -17,8 +18,7 @@ class HomeScreenController extends GetxController with CacheManager {
   final CategoriesRepository categoriesRepository = Get.find();
   final PanierRepository panierRepository = Get.find();
 
-  RxList<CategoriesWithProductModel> categoriesWithProduct =
-      <CategoriesWithProductModel>[].obs;
+  RxList<CategoriesWithProductModel> categoriesWithProduct = <CategoriesWithProductModel>[].obs;
   final price = String;
   final reduc = Int;
   final product = ProductResponseModel();
@@ -36,16 +36,12 @@ class HomeScreenController extends GetxController with CacheManager {
   }
 
   void getCategoriesWithProducts() async {
-    var categoriesResponse =
-        await categoriesRepository.getCategories(CategoriesRequestModel());
+    var categoriesResponse = await categoriesRepository.getCategories(CategoriesRequestModel());
     var respList = <CategoriesWithProductModel>[];
     for (var i = 0; i < categoriesResponse.length; i++) {
-      var products = await productsRepository.getProduct(
-          ProductRequestModel(), categoriesResponse[i].id!);
+      var products = await productsRepository.getProduct(ProductRequestModel(), categoriesResponse[i].id!);
       respList.add(CategoriesWithProductModel(
-          id: categoriesResponse[i].id,
-          name: categoriesResponse[i].name,
-          products: products));
+          id: categoriesResponse[i].id, name: categoriesResponse[i].name, products: products));
     }
     categoriesWithProduct.value = respList;
   }
@@ -89,5 +85,9 @@ class HomeScreenController extends GetxController with CacheManager {
       quantity: 1,
     );
     await addLocalCart(productOnCart);
+  }
+
+  goToDetails(String? productId) async {
+    await Get.toNamed(AppRoutes.details, parameters: {'productId': productId ?? ""});
   }
 }

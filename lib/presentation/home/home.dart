@@ -12,15 +12,11 @@ class HomeScreen extends GetWidget<HomeScreenController> {
     backgroundColor: const Color.fromARGB(255, 251, 209, 72),
   );
 
-  final TextStyle title = const TextStyle(
-      fontSize: 25,
-      fontWeight: FontWeight.bold,
-      color: Color.fromARGB(255, 89, 56, 56));
+  final TextStyle title =
+      const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 89, 56, 56));
 
-  final TextStyle text = const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-      color: Color.fromARGB(255, 89, 56, 56));
+  final TextStyle text =
+      const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 89, 56, 56));
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +47,9 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                 height: 500,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: controller
-                                      .categoriesWithProduct[index]
-                                      .products
-                                      ?.length,
+                                  itemCount: controller.categoriesWithProduct[index].products?.length,
                                   itemBuilder: (context, index2) {
-                                    return controller
-                                                .categoriesWithProduct[index]
-                                                .products![index2]
-                                                .reduction !=
-                                            0
+                                    return controller.categoriesWithProduct[index].products![index2].reduction != 0
                                         ? Column(
                                             children: [
                                               Stack(
@@ -80,8 +69,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                         style: const TextStyle(
                                                           color: Colors.white,
                                                           fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
+                                                          fontWeight: FontWeight.bold,
                                                         ),
                                                       ),
                                                     ),
@@ -91,9 +79,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                               SizedBox(
                                                 width: 250,
                                                 child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: [
                                                     Text(
                                                       '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
@@ -103,28 +89,13 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                       children: [
                                                         Text(
                                                           '${controller.categoriesWithProduct[index].products![index2].price}€  ',
-                                                          style:
-                                                              const TextStyle(
-                                                            decoration:
-                                                                TextDecoration
-                                                                    .lineThrough,
-                                                            decorationColor:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    89,
-                                                                    56,
-                                                                    56),
-                                                            decorationThickness:
-                                                                1.8,
+                                                          style: const TextStyle(
+                                                            decoration: TextDecoration.lineThrough,
+                                                            decorationColor: Color.fromARGB(255, 89, 56, 56),
+                                                            decorationThickness: 1.8,
                                                             fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    89,
-                                                                    56,
-                                                                    56),
+                                                            fontWeight: FontWeight.bold,
+                                                            color: Color.fromARGB(255, 89, 56, 56),
                                                           ),
                                                         ),
                                                         Text(
@@ -139,9 +110,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                               Column(
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
                                                       ElevatedButton(
                                                         style: bg,
@@ -149,16 +118,15 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                           "Voir détails",
                                                           style: text,
                                                         ),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          controller.goToDetails(controller
+                                                              .categoriesWithProduct[index].products![index2].id);
+                                                        },
                                                       ),
                                                       ElevatedButton(
                                                         onPressed: () {
-                                                          controller.addToCart(
-                                                              controller
-                                                                      .categoriesWithProduct[
-                                                                          index]
-                                                                      .products![
-                                                                  index2]);
+                                                          controller.addToCart(controller
+                                                              .categoriesWithProduct[index].products![index2]);
                                                         },
                                                         style: bg,
                                                         child: Text(
@@ -182,9 +150,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                               SizedBox(
                                                 width: 250,
                                                 child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                   children: [
                                                     Text(
                                                       '${controller.categoriesWithProduct[index].products![index2].brand?.toCapitalized()}',
@@ -200,9 +166,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                               Column(
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
                                                       ElevatedButton(
                                                         style: bg,
@@ -214,12 +178,8 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                                       ),
                                                       ElevatedButton(
                                                         onPressed: () {
-                                                          controller.addToCart(
-                                                              controller
-                                                                      .categoriesWithProduct[
-                                                                          index]
-                                                                      .products![
-                                                                  index2]);
+                                                          controller.addToCart(controller
+                                                              .categoriesWithProduct[index].products![index2]);
                                                         },
                                                         style: bg,
                                                         child: Text(
