@@ -97,7 +97,7 @@ class CheckoutScreen extends GetWidget<CheckoutScreenController> {
                             ],
                           );
                         } else {
-                          return const Center(
+                          return Center(
                             child: Column(children: [
                               Text('Veuillez ajouter une adresse'),
                               ModalWidget()

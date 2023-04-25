@@ -44,24 +44,22 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  Text('marque: '),
-                                  Text(
-                                    '${controller.detailsModel.value!.brand}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            Row(
+                              children: [
+                                const Text('marque: '),
+                                Text(
+                                  '${controller.detailsModel.value!.brand}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                             Container(
                               child: Row(
                                 children: [
-                                  Text('Price: '),
+                                  const Text('Price: '),
                                   Text(
                                     '${controller.detailsModel.value!.price}',
                                     style: const TextStyle(
@@ -75,7 +73,7 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                             Container(
                               child: Row(
                                 children: [
-                                  Text('Size: '),
+                                  const Text('Size: '),
                                   Text(
                                     '${controller.detailsModel.value!.size}',
                                     style: const TextStyle(
@@ -96,11 +94,11 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                             child: Container(
                               child: Row(
                                 children: [
-                                  Text('reduction: '),
+                                  const Text('reduction: '),
                                   Text(
                                     '${controller.detailsModel.value?.reduction}',
                                   ),
-                                  Text('€'),
+                                  const Text('€'),
                                 ],
                               ),
                             ),
@@ -121,7 +119,7 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     '${controller.detailsModel.value?.description}',
                                     style: const TextStyle(
@@ -137,11 +135,16 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
                       Row(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              controller
+                                  .addToCart(controller.detailsModel.value);
+                            },
                             child: const Text('Add To Cart'),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                             child: const Text('Page Home'),
                           ),
                         ],

@@ -1,9 +1,13 @@
+import 'package:e_commerce_front_getx/core/authentification/cache_manager.dart';
 import 'package:e_commerce_front_getx/data/api_client/api_client.dart';
 import 'package:e_commerce_front_getx/data/models/products/product_response_model.dart';
 
 import '../../../core/app_export.dart';
+import '../../../data/models/panier/panier_request_model.dart';
+import '../../../data/models/productOnCart/productOnCart_response_model.dart';
 
-class DetailsScreenController extends GetxController {
+class DetailsScreenController extends GetxController with CacheManager {
+  PanierRepository panierRepository = Get.find();
   late String productID = Get.parameters['productID'] ?? "";
   final ProductRepository productsRepository = Get.find();
   late ProductResponseModel product;
@@ -37,5 +41,36 @@ class DetailsScreenController extends GetxController {
       size: product.size,
       stock: product.stock,
     );
+  }
+
+  addToCart(product) async {
+    var jwt = getJwt();
+    if (jwt == null) {
+      await addToLocalCart(product);
+    } else {
+      await addToOnlineCart(product);
+    }
+    print(getLength());
+  }
+
+  addToOnlineCart(product) async {
+    await panierRepository.addToCart(PanierRequestModel(productId: product.id));
+    await addToLocalCart(product);
+  }
+
+  addToLocalCart(product) async {
+    var productOnCart = ProductOnCartResponseModel(
+      id: product.id,
+      brand: product.brand,
+      description: product.description,
+      category: product.category,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      reduction: product.reduction,
+      size: product.size,
+      quantity: 1,
+    );
+    await addLocalCart(productOnCart);
   }
 }

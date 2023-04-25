@@ -10,5 +10,6 @@ class DetailsScreenBinding extends Bindings {
 
     Get.lazyPut(() => UserRepository());
     Get.lazyPut(() => AddressRepository());
+    Get.lazyPut(() => PanierRepository());
   }
 }
