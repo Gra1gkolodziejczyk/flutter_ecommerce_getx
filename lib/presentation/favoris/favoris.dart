@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/app_export.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
@@ -13,7 +14,9 @@ class FavorisScreen extends GetWidget<FavorisScreenController> {
       appBar: CustomAppBar(),
       drawer: NavigationDrawerMenu(),
       body: SafeArea(
-        child: Text("Hello World"),
+        child: Center(
+          child: Text("Page Favoris"),
+        ),
       ),
     );
   }

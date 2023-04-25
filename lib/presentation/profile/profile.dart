@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../widgets/addAddress.dart';
 import '../../widgets/custom_appbar.dart';
@@ -127,7 +128,7 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                         Row(
                                           children: [
                                             Text(
-                                                ' ${controller.addressModel[index].city}')
+                                                '${controller.addressModel[index].city}'),
                                           ],
                                         )
                                       ],

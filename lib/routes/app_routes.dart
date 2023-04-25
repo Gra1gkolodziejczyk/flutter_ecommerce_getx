@@ -1,4 +1,6 @@
 import 'package:e_commerce_front_getx/presentation/checkout/checkout.dart';
+import 'package:e_commerce_front_getx/presentation/details/binding/details_screen_binding.dart';
+import 'package:e_commerce_front_getx/presentation/details/details.dart';
 
 import '../core/app_export.dart';
 import '../core/authentification/authentification_middleware.dart';
@@ -9,14 +11,14 @@ import '../presentation/favoris/binding/favoris_screen_binding.dart';
 import '../presentation/favoris/favoris.dart';
 import '../presentation/home/binding/home_screen_binding.dart';
 import '../presentation/home/home.dart';
+import '../presentation/login/binding/login_screen_binding.dart';
+import '../presentation/login/login.dart';
 import '../presentation/panier/binding/panier_screen_binding.dart';
 import '../presentation/panier/panier.dart';
 import '../presentation/profile/binding/profile_screen_binding.dart';
 import '../presentation/profile/profile.dart';
 import '../presentation/register/binding/register_screen_binding.dart';
 import '../presentation/register/register.dart';
-import '../presentation/login/binding/login_screen_binding.dart';
-import '../presentation/login/login.dart';
 import '../presentation/reset_password/binding/reset_password_screen_binding.dart';
 import '../presentation/reset_password/reset_password.dart';
 
@@ -30,6 +32,7 @@ class AppRoutes {
   static String favoris = '/favoris';
   static String commandes = '/commandes';
   static String checkout = '/checkout';
+  static String details = '/details';
 
   static List<GetPage> pages = [
     GetPage(
@@ -74,6 +77,11 @@ class AppRoutes {
       page: () => const CommandesScreen(),
       binding: CommandesScreenBinding(),
       middlewares: [AuthentificationMiddleware()],
+    ),
+    GetPage(
+      name: details,
+      page: () => DetailsScreen(),
+      binding: DetailsScreenBinding(),
     ),
     GetPage(
         name: checkout,
