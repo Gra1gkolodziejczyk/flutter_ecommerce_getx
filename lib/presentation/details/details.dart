@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 
@@ -18,22 +20,23 @@ class DetailsScreen extends GetWidget<DetailsScreenController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(
-              () => SizedBox(
+            Obx(() {
+              controller.getProductById();
+              return SizedBox(
                 height: MediaQuery.of(context).size.height - 149,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
+                    Column(
                       children: [
                         Text('${controller.detailsModel.value!.id}'),
-                        // Text(product.name),
+                        Text('${controller.detailsModel.value!.name}'),
                       ],
                     ),
                   ],
                 ),
-              ),
-            ),
+              );
+            }),
           ],
         ),
       ),

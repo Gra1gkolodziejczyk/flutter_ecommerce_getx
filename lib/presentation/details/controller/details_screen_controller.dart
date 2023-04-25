@@ -12,7 +12,6 @@ class DetailsScreenController extends GetxController {
 
   @override
   void onInit() {
-    getProductById();
     super.onInit();
   }
 
