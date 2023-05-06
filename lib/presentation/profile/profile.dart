@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import '../../widgets/Capitalize.dart';
 
+import '../../widgets/Capitalize.dart';
 import '../../widgets/addAddress.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/navigation_drawer.dart';
@@ -34,11 +34,11 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Image(
                               image: AssetImage('assets/ShopTaBoard_nobg.png'),
                               height: 150,
@@ -127,7 +127,7 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
-                                                width: 150,
+                                                width: 250,
                                                 height: 120,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
@@ -177,7 +177,7 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                                           Text(
                                                               ' ${controller.addressModel[index].city}')
                                                         ],
-                                                      )
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -189,10 +189,12 @@ class ProfileScreen extends GetWidget<ProfileScreenController> {
                                     ),
                                   );
                                 } else {
-                                  return const Center(
-                                    child: Column(children: [
-                                      Text('Vous n\'avez pas d\'adresse'),
-                                    ]),
+                                  return Center(
+                                    child: Column(
+                                      children: const [
+                                        Text('Vous n\'avez pas d\'adresse'),
+                                      ],
+                                    ),
                                   );
                                 }
                               },

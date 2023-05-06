@@ -26,6 +26,7 @@ class DetailsScreen extends GetWidget<DetailsScreenController>
             Obx(() {
               controller.getProductById();
               return SizedBox(
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height - 149,
                 child: Center(
                   child: Column(
