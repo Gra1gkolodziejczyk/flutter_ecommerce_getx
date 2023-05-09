@@ -66,4 +66,11 @@ ou runner le projet en mode debug cliquer sur le bouton vert dans la barre d'out
 
 Profiter de notre magnifique e-commerce ;))
 
++ à mettre ça dans un fichier .env
+
+```
+URL_API="http://161.97.90.183:8000"
+STRIPE_API_KEY='pk_test_51Ml9mZBikVn85IoUlXLM3RX77AtBDcCdsQXNoA9sKVKOkjabUudluKUwHDYt601c9lXKgSTr27wGZvS8uM1HJuQj00o5U2qyq7'
+```
+
 
